@@ -1,4 +1,5 @@
 let input = document.getElementById('file');
+let body = document.getElementById('body');
 let uploaded_image;
 
 let images = [];

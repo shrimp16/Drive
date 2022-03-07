@@ -37,28 +37,32 @@ button {
     cursor: pointer;
 }
 
-.body {
+img {
+    height: 15rem;
+    width: 15rem;
+}
+
+.center {
+    display: flex;
     width: 80%;
-    display: flex;
-    flex-direction: column;
     margin: auto;
-    padding-top: 1rem;
 }
 
-.row {
-    display: flex;
-    flex-direction: row;
+.body {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
     margin: auto;
-    margin-bottom: 5px;
+    margin-top: 1rem;
 }
 
-.row > img {
-    width: 24.5%;
-    height: 200px;
+.body > img {
     margin: auto;
-    transition: 0.4s;
+    margin-top: 1rem;
+    transition: 0.5s;
 }
 
-.row > img:hover {
+img:hover {
     transform: scale(1.1);
+    cursor: pointer;
 }
