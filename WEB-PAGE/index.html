@@ -8,21 +8,22 @@
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>
-
+    <input type="file" class="file" id="file">
     <div class="header">
         <h1>My Drive</h1>
         <div class="options">
-            <button>Upload Files</button>
-            <button>My Files</button>
+            <button id="upload">Upload Files</button>
+            <button id="files">My Files</button>
         </div>
     </div>
 
     <div class="body">
         <div class="row">
-            <img src="ruler.jpg" alt="">
+            <img id="test" src="ruler.jpg" alt="">
             <img src="ruler.jpg" alt="">
             <img src="ruler.jpg" alt="">
             <img src="ruler.jpg" alt="">
@@ -47,7 +48,7 @@
         </div>
     </div>
 
-
+    <script src="script.js"></script>
 </body>
 
 </html>

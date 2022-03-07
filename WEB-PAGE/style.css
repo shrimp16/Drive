@@ -10,6 +10,10 @@
     align-items: center;
 }
 
+.file {
+    display: none;
+}
+
 .header > h1 {
     margin-bottom: 10px;
     font-size: 3rem;
@@ -50,6 +54,7 @@ button {
 
 .row > img {
     width: 24.5%;
+    height: 200px;
     margin: auto;
     transition: 0.4s;
 }
