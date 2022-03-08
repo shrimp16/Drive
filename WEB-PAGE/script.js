@@ -6,7 +6,10 @@ let images = [];
 
 input.addEventListener('change', () => {
     const data = new FormData();
-    data.append('image', input.files[0]);
+
+    for(let i = 0; i < input.files.length; i++){
+        data.append('image', input.files[i]);
+    }
 
     fetch('http://localhost:5000/upload', {
         method: 'POST',

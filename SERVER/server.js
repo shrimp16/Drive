@@ -18,7 +18,7 @@ const upload = multer({ storage: fileStorageEngine });
 app.listen(5000);
 app.use(cors());
 
-app.post('/upload', upload.single('image'), (req, res) => {
-    console.log(req.file);
+app.post('/upload', upload.array('image', 3), (req, res) => {
+    console.log(req.files);
     res.send('Single File Upload Success')
 });
