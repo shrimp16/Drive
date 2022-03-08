@@ -8,10 +8,10 @@ input.addEventListener('change', () => {
     const data = new FormData();
 
     for(let i = 0; i < input.files.length; i++){
-        data.append('image', input.files[i]);
+        data.append('files', input.files[i]);
     }
 
-    fetch('http://localhost:5000/upload', {
+    fetch('http://192.168.1.103:5000/upload', {
         method: 'POST',
         body: data,
     }).then((result) => {

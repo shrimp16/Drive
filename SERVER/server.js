@@ -3,6 +3,7 @@ const multer = require('multer');
 const cors = require('cors');
 
 const app = express();
+const PORT = 5000;
 
 const fileStorageEngine = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -15,10 +16,12 @@ const fileStorageEngine = multer.diskStorage({
 
 const upload = multer({ storage: fileStorageEngine });
 
-app.listen(5000);
+app.listen(PORT, () => {
+    console.log(`Server running on port: ${PORT}`)
+});
 app.use(cors());
 
-app.post('/upload', upload.array('image', 3), (req, res) => {
+app.post('/upload', upload.array('files', 10), (req, res) => {
     console.log(req.files);
-    res.send('Single File Upload Success')
+    res.send('Done!');
 });
