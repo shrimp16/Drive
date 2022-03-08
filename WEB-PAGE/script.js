@@ -5,13 +5,17 @@ let uploaded_image;
 let images = [];
 
 input.addEventListener('change', () => {
-    const reader = new FileReader();
-    reader.onload = function () {
-        const img = new Image();
-        img.src = reader.result;
-        images.push(img);
-    }
-    reader.readAsDataURL(input.files[0]);
+    const data = new FormData();
+    data.append('image', input.files[0]);
+
+    fetch('http://localhost:5000/upload', {
+        method: 'POST',
+        body: data,
+    }).then((result) => {
+        console.log("File Sent Successful");
+    }).catch((err) => {
+        console.log(err.message);
+    })
 })
 
 $('#upload').click(() => {
