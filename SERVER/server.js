@@ -21,11 +21,10 @@ const fileStorageEngine = multer.diskStorage({
 
 const upload = multer({ storage: fileStorageEngine });
 
-function addFileName(files){
-    let currentFiles = fs.readFileSync('files.json');
-    currentFiles = JSON.parse(currentFiles);
-    for(let i = 0; i < files.length; i++){
-        currentFiles.push({'file': files[i].filename})
+function addFileName(uploadFiles){
+    let files = getFiles();
+    for(let i = 0; i < uploadFiles.length; i++){
+        currentFiles.push({'file': uploadFiles[i].filename})
     }
     fs.writeFile('files.json', JSON.stringify(currentFiles, null, 2), (err) => {
         if(err){
@@ -35,9 +34,7 @@ function addFileName(files){
 }
 
 function getFiles(){
-    let files = fs.readFileSync('files.json');
-    files = JSON.parse(files);
-    return files;
+    return JSON.parse(fs.readFileSync('files.json'));
 }
 
 // Sets the port that the server will listen to
@@ -55,6 +52,7 @@ app.post('/upload', upload.array('files', 10), (req, res) => {
 });
 
 app.get('/file/:id', (req, res) => {
+    let file = files[req.params.id].file;
     let files = getFiles();
     let options = {
         root: path.join(__dirname, 'storage'),
@@ -64,14 +62,11 @@ app.get('/file/:id', (req, res) => {
             'x-sent': true
         }
     }
-    //WIP
-    console.log(typeof files[req.params.id].file);
-    let file = files[req.params.id].file;
     res.sendFile(file, options, (err) => {
         if(err){
             console.log(err.message);
         } else {
-            console.log('Sent!')
+            console.log('File sent!')
         }
     })
 })
