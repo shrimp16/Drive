@@ -35,7 +35,9 @@ function addFileName(files){
 }
 
 function getFiles(){
-    
+    let files = fs.readFileSync('files.json');
+    files = JSON.parse(files);
+    return files;
 }
 
 // Sets the port that the server will listen to
@@ -63,7 +65,9 @@ app.get('/file/:id', (req, res) => {
         }
     }
     //WIP
-    res.sendFile(files[req.params.id], options, (err) => {
+    console.log(typeof files[req.params.id].file);
+    let file = files[req.params.id].file;
+    res.sendFile(file, options, (err) => {
         if(err){
             console.log(err.message);
         } else {
