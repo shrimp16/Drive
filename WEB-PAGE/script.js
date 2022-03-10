@@ -4,10 +4,24 @@ let uploaded_image;
 
 let images = [];
 
+function cleanBody() {
+    body.innerHTML = "";
+}
+
+function addImage(img) {
+    body.appendChild(img);
+}
+
+function createNewImage(image) {
+    let img = new Image();
+    img.src = URL.createObjectURL(image);
+    addImage(img);
+}
+
 input.addEventListener('change', () => {
     const data = new FormData();
 
-    for(let i = 0; i < input.files.length; i++){
+    for (let i = 0; i < input.files.length; i++) {
         data.append('files', input.files[i]);
     }
 
@@ -26,12 +40,12 @@ $('#upload').click(() => {
 })
 
 $('#files').click(() => {
-    fetch('http://192.168.1.103:5000/file/0')
-    .then(response => response.blob())
-    .then((imageBlob) => {
-        let imageObjectURL = URL.createObjectURL(imageBlob);
-        let img = new Image();
-        img.src = imageObjectURL;
-        body.appendChild(img);
-    })
+    cleanBody();
+    for (let i = 0; i < 2; i++) {
+        fetch('http://192.168.1.103:5000/file/' + i)
+            .then(response => response.blob())
+            .then((imageBlob) => {
+                createNewImage(imageBlob);
+            })
+    }
 })

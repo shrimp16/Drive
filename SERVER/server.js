@@ -22,11 +22,11 @@ const fileStorageEngine = multer.diskStorage({
 const upload = multer({ storage: fileStorageEngine });
 
 function addFileName(uploadFiles){
-    let files = getFiles();
+    let fileList = getFiles();
     for(let i = 0; i < uploadFiles.length; i++){
-        currentFiles.push({'file': uploadFiles[i].filename})
+        fileList.push({'file': uploadFiles[i].filename})
     }
-    fs.writeFile('files.json', JSON.stringify(currentFiles, null, 2), (err) => {
+    fs.writeFile('files.json', JSON.stringify(fileList, null, 2), (err) => {
         if(err){
             console.log(err.message);
         }
