@@ -70,3 +70,8 @@ app.get('/file/:id', (req, res) => {
         }
     })
 })
+
+app.get('/files', (req, res) => {
+    let files = getFiles();
+    res.send(JSON.stringify(files.length));
+})

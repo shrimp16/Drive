@@ -18,6 +18,16 @@ function createNewImage(image) {
     addImage(img);
 }
 
+function getFiles(number){
+    for (let i = 0; i < number; i++) {
+        fetch('http://192.168.1.103:5000/file/' + i)
+            .then(response => response.blob())
+            .then((imageBlob) => {
+                createNewImage(imageBlob);
+            })
+    }
+}
+
 input.addEventListener('change', () => {
     const data = new FormData();
 
@@ -40,12 +50,7 @@ $('#upload').click(() => {
 })
 
 $('#files').click(() => {
+    let filesNumber;
     cleanBody();
-    for (let i = 0; i < 2; i++) {
-        fetch('http://192.168.1.103:5000/file/' + i)
-            .then(response => response.blob())
-            .then((imageBlob) => {
-                createNewImage(imageBlob);
-            })
-    }
+    fetch('http://192.168.1.103:5000/files').then((response) => response.json()).then((response) => getFiles(response));
 })
