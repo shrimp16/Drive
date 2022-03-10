@@ -52,8 +52,8 @@ app.post('/upload', upload.array('files', 10), (req, res) => {
 });
 
 app.get('/file/:id', (req, res) => {
-    let file = files[req.params.id].file;
     let files = getFiles();
+    let file = files[req.params.id].file;
     let options = {
         root: path.join(__dirname, 'storage'),
         dotfiles: 'deny',

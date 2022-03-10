@@ -26,9 +26,12 @@ $('#upload').click(() => {
 })
 
 $('#files').click(() => {
-    let test = "";
-    for (let i = 0; i < images.length; i++) {
-        test += `<img src="${images[i].src}">`
-    }
-    body.innerHTML = test;
+    fetch('http://192.168.1.103:5000/file/0')
+    .then(response => response.blob())
+    .then((imageBlob) => {
+        let imageObjectURL = URL.createObjectURL(imageBlob);
+        let img = new Image();
+        img.src = imageObjectURL;
+        body.appendChild(img);
+    })
 })
