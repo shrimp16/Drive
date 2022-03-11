@@ -66,3 +66,20 @@ img:hover {
     transform: scale(1.1);
     cursor: pointer;
 }
+
+.alert {
+    background-color: lightgreen;
+    text-align: center;
+    width: 60%;
+    margin: auto;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    align-content: center;
+    border: 3px black solid;
+    font-size: 1.5rem;
+}
+
+.alert > span:hover {
+    color: white;
+    cursor: pointer;
+}
