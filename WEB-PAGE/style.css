@@ -68,6 +68,7 @@ img:hover {
 }
 
 .alert {
+    display: none;
     background-color: lightgreen;
     text-align: center;
     width: 60%;

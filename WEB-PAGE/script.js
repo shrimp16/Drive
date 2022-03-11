@@ -1,5 +1,7 @@
 let input = document.getElementById('file');
 let body = document.getElementById('body');
+let card = document.getElementById('alert');
+let cardText = document.getElementById('alert-text');
 let uploaded_image;
 
 let images = [];
@@ -26,10 +28,22 @@ function getFiles(number){
                 createNewImage(imageBlob);
             })
     }
+    showCard('Files loaded', 'lightgreen')
+}
+
+function showCard(message, color){
+    card.style.backgroundColor = color;
+    cardText.innerText = message;
+    card.style.display = "block";
 }
 
 input.addEventListener('change', () => {
     const data = new FormData();
+
+    if(input.files.length > 10){
+        showCard('Too much files', 'red');
+        return;
+    }
 
     for (let i = 0; i < input.files.length; i++) {
         data.append('files', input.files[i]);
@@ -40,8 +54,10 @@ input.addEventListener('change', () => {
         body: data,
     }).then((result) => {
         console.log("File Sent Successful");
+        showCard("File sent successfully", "lightgreen");
     }).catch((err) => {
         console.log(err.message);
+        showCard(err.message, "red")
     })
 })
 
@@ -50,7 +66,6 @@ $('#upload').click(() => {
 })
 
 $('#files').click(() => {
-    let filesNumber;
     cleanBody();
     fetch('http://192.168.1.103:5000/files').then((response) => response.json()).then((response) => getFiles(response));
 })
