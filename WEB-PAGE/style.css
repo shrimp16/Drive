@@ -84,3 +84,24 @@ img:hover {
     color: white;
     cursor: pointer;
 }
+
+.drag {
+    height: 25rem;
+    margin: auto;
+    width: 80%;
+    border: 3px black solid;
+    background-color: lightgray;
+}
+
+.drag-content {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    align-items: center;
+    margin-top: 10rem
+}
+
+.drag-content > p {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    margin-bottom: 10px;
+}
