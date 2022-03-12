@@ -2,6 +2,7 @@ let input = document.getElementById('file');
 let body = document.getElementById('body');
 let card = document.getElementById('alert');
 let cardText = document.getElementById('alert-text');
+let uploadMenu = document.getElementById('drag');
 let uploaded_image;
 
 let images = [];
@@ -62,6 +63,15 @@ input.addEventListener('change', () => {
 })
 
 $('#upload').click(() => {
+    body.innerHTML = `<div id="drag" class="drag">
+    <div class="drag-content options">
+        <p>Drag your files to here or</p>
+        <button id='select'>Click here to select them</button>
+    </div>
+</div>`
+})
+
+$('#select').click(() => {
     $('#file').trigger('click');
 })
 
