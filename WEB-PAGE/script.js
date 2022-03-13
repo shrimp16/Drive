@@ -71,7 +71,16 @@ document.getElementById('drag').addEventListener('click', () => {
     $('#file').trigger('click');
 })
 
-document.getElementById('drag').addEventListener('dragover', () => {
+document.getElementById('drag').addEventListener('dragover', (e) => {
+    e.preventDefault();
+})
+
+document.getElementById('drag').addEventListener('dragleave', () => {
+
+})
+
+document.getElementById('drag').addEventListener('drop', (e) => {
+    e.preventDefault();
     console.log("xdxd");
 })
 
