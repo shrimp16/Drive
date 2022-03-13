@@ -54,8 +54,7 @@ input.addEventListener('change', () => {
         method: 'POST',
         body: data,
     }).then((result) => {
-        console.log("File Sent Successful");
-        showCard("File sent successfully", "lightgreen");
+        showCard("Files sent successfully", "lightgreen");
     }).catch((err) => {
         console.log(err.message);
         showCard(err.message, "red")
@@ -63,16 +62,19 @@ input.addEventListener('change', () => {
 })
 
 $('#upload').click(() => {
-    body.innerHTML = `<div id="drag" class="drag">
-    <div class="drag-content options">
-        <p>Drag your files to here or</p>
-        <button id='select'>Click here to select them</button>
-    </div>
-</div>`
+    body.innerHTML = `
+    <div id="drag" class="drag options">
+        <p>Drag your files to here or click to select files</p>
+    </div>`
+
+document.getElementById('drag').addEventListener('click', () => {
+    $('#file').trigger('click');
 })
 
-$('#select').click(() => {
-    $('#file').trigger('click');
+document.getElementById('drag').addEventListener('dragover', () => {
+    console.log("xdxd");
+})
+
 })
 
 $('#files').click(() => {
