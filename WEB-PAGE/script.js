@@ -2,8 +2,6 @@ let input = document.getElementById('file');
 let body = document.getElementById('body');
 let card = document.getElementById('alert');
 let cardText = document.getElementById('alert-text');
-let uploadMenu = document.getElementById('drag');
-let uploaded_image;
 
 let images = [];
 
@@ -21,7 +19,7 @@ function createNewImage(image) {
     addImage(img);
 }
 
-function getFiles(number){
+function getFiles(number) {
     for (let i = 0; i < number; i++) {
         fetch('http://192.168.1.103:5000/file/' + i)
             .then(response => response.blob())
@@ -32,7 +30,7 @@ function getFiles(number){
     showCard('Files loaded', 'lightgreen')
 }
 
-function showCard(message, color){
+function showCard(message, color) {
     card.style.backgroundColor = color;
     cardText.innerText = message;
     card.style.display = "block";
@@ -41,7 +39,7 @@ function showCard(message, color){
 input.addEventListener('change', () => {
     const data = new FormData();
 
-    if(input.files.length > 10){
+    if (input.files.length > 10) {
         showCard('Too much files', 'red');
         return;
     }
@@ -65,24 +63,27 @@ $('#upload').click(() => {
     body.innerHTML = `
     <div id="drag" class="drag options">
         <p>Drag your files to here or click to select files</p>
-    </div>`
+    </div>`;
 
-document.getElementById('drag').addEventListener('click', () => {
-    $('#file').trigger('click');
-})
+    let uploadMenu = document.querySelector('#drag');
 
-document.getElementById('drag').addEventListener('dragover', (e) => {
-    e.preventDefault();
-})
+    uploadMenu.addEventListener('click', () => {
+        $('#file').trigger('click');
+    })
 
-document.getElementById('drag').addEventListener('dragleave', () => {
+    uploadMenu.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        uploadMenu.classList.add('drag-hover');
+    })
 
-})
+    uploadMenu.addEventListener('dragleave', () => {
+        uploadMenu.classList.remove('drag-hover');
+    })
 
-document.getElementById('drag').addEventListener('drop', (e) => {
-    e.preventDefault();
-    console.log("xdxd");
-})
+    uploadMenu.addEventListener('drop', (e) => {
+        e.preventDefault();
+        console.log(e.dataTransfer.files);
+    })
 
 })
 
