@@ -88,8 +88,8 @@ img:hover {
 .drag {
     height: 25rem;
     margin: auto;
-    width: 80%;
-    border: 3px black dashed;
+    width: 55%;
+    border: 3px gray dashed;
     background-color: lightgray;
 }
 
@@ -100,8 +100,4 @@ img:hover {
     align-items: center;
     margin-top: 11rem;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
-.drag-hover {
-    border: 3px black solid;
 }

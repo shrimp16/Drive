@@ -1,9 +1,7 @@
+import * as card from './src/cards.js';
+
 let input = document.getElementById('file');
 let body = document.getElementById('body');
-let card = document.getElementById('alert');
-let cardText = document.getElementById('alert-text');
-
-let images = [];
 
 function cleanBody() {
     body.innerHTML = "";
@@ -27,20 +25,14 @@ function getFiles(number) {
                 createNewImage(imageBlob);
             })
     }
-    showCard('Files loaded', 'lightgreen')
-}
-
-function showCard(message, color) {
-    card.style.backgroundColor = color;
-    cardText.innerText = message;
-    card.style.display = "block";
+    card.show('Files loaded', 'lightgreen');
 }
 
 input.addEventListener('change', () => {
     const data = new FormData();
 
     if (input.files.length > 10) {
-        showCard('Too much files', 'red');
+        card.show('Too much files, the limit is 10', 'red');
         return;
     }
 
@@ -51,17 +43,16 @@ input.addEventListener('change', () => {
     fetch('http://192.168.1.103:5000/upload', {
         method: 'POST',
         body: data,
-    }).then((result) => {
-        showCard("Files sent successfully", "lightgreen");
+    }).then(() => {
+        card.show('Files sent with success', 'lightgreen');
     }).catch((err) => {
-        console.log(err.message);
-        showCard(err.message, "red")
+        card.show(err.message, 'red');
     })
 })
 
 $('#upload').click(() => {
     body.innerHTML = `
-    <div id="drag" class="drag options">
+    <div id="drag" class="drag">
         <p>Drag your files to here or click to select files</p>
     </div>`;
 
