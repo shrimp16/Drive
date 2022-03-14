@@ -7,14 +7,10 @@ function cleanBody() {
     body.innerHTML = "";
 }
 
-function addImage(img) {
-    body.appendChild(img);
-}
-
 function createNewImage(image) {
     let img = new Image();
     img.src = URL.createObjectURL(image);
-    addImage(img);
+    body.appendChild(img);
 }
 
 function getFiles(number) {
@@ -28,7 +24,7 @@ function getFiles(number) {
     card.show('Files loaded', 'lightgreen');
 }
 
-function prepareFiles(data) {
+function uploadFiles(data) {
 
     let dataToSend = new FormData();
 
@@ -41,11 +37,11 @@ function prepareFiles(data) {
         dataToSend.append('files', data[i]);
     }
 
-    uploadFiles(dataToSend);
+    sendToServer(dataToSend);
 
 }
 
-function uploadFiles(files){
+function sendToServer(files){
 
     fetch('http://192.168.1.103:5000/upload', {
         method: 'POST',
@@ -55,11 +51,11 @@ function uploadFiles(files){
     }).catch((err) => {
         card.show(err.message, 'red');
     })
-    
+
 }
 
 input.addEventListener('change', () => {
-    prepareFiles(input.files);
+    uploadFiles(input.files);
 })
 
 $('#upload').click(() => {
@@ -86,7 +82,7 @@ $('#upload').click(() => {
 
     uploadMenu.addEventListener('drop', (e) => {
         e.preventDefault();
-        console.log(e.dataTransfer.files);
+        uploadFiles(e.dataTransfer.files);
     })
 
 })
