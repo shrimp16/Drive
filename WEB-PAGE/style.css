@@ -94,6 +94,7 @@ img:hover {
     margin-bottom: 1rem;
     border: 3px gray dashed;
     background-color: lightgray;
+    cursor: pointer;
 }
 
 .drag > P {

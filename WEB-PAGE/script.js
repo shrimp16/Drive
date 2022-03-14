@@ -28,26 +28,38 @@ function getFiles(number) {
     card.show('Files loaded', 'lightgreen');
 }
 
-input.addEventListener('change', () => {
-    const data = new FormData();
+function prepareFiles(data) {
 
-    if (input.files.length > 10) {
-        card.show('Too much files, the limit is 10', 'red');
-        return;
+    let dataToSend = new FormData();
+
+    if(data.length > 10){
+        card.show('Thte file limit is 10', 'red');
+        return
     }
 
-    for (let i = 0; i < input.files.length; i++) {
-        data.append('files', input.files[i]);
+    for(let i = 0; i < data.length; i++){
+        dataToSend.append('files', data[i]);
     }
+
+    uploadFiles(dataToSend);
+
+}
+
+function uploadFiles(files){
 
     fetch('http://192.168.1.103:5000/upload', {
         method: 'POST',
-        body: data,
+        body: files,
     }).then(() => {
         card.show('Files sent with success', 'lightgreen');
     }).catch((err) => {
         card.show(err.message, 'red');
     })
+    
+}
+
+input.addEventListener('change', () => {
+    prepareFiles(input.files);
 })
 
 $('#upload').click(() => {
