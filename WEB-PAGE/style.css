@@ -46,6 +46,8 @@ img {
     display: flex;
     width: 80%;
     margin: auto;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
 }
 
 .body {
@@ -86,9 +88,10 @@ img:hover {
 }
 
 .drag {
-    height: 25rem;
+    height: 30rem;
     margin: auto;
-    width: 55%;
+    margin-bottom: 1rem;
+    width: 30rem;
     border: 3px gray dashed;
     background-color: lightgray;
 }
@@ -96,8 +99,26 @@ img:hover {
 .drag > P {
     display: flex;
     flex-direction: column;
+    width: 80%;
     margin: auto;
     align-items: center;
-    margin-top: 11rem;
+    text-align: center;
+    margin-top: 14rem;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.drag > i {
+    width: 100%;
+    margin-top: 1rem;
+    font-size: 2rem;
+    text-align: center;
+    color: gray;
+}
+
+.drag-hover {
+    border: 3px black dashed;
+}
+
+.drag-hover > i {
+    color: black;
 }

@@ -54,6 +54,7 @@ $('#upload').click(() => {
     body.innerHTML = `
     <div id="drag" class="drag">
         <p>Drag your files to here or click to select files</p>
+        <i class="fa-solid fa-arrow-up-from-bracket"></i>
     </div>`;
 
     let uploadMenu = document.querySelector('#drag');
