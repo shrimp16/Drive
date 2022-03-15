@@ -1,10 +1,13 @@
 import * as card from './cards.js';
 
-let progressBar = document.getElementById('progress');
+let progressBar = document.getElementById('progress-bar');
 let progressText = document.getElementById('progress-text');
 
-export function setupDragAndDrop() {
+export function start() {
     let uploadMenu = document.querySelector('#drag');
+
+    progressText.innerText = "0%";
+    progressBar.value = 0;
 
     uploadMenu.addEventListener('click', () => {
         $('#file').trigger('click');

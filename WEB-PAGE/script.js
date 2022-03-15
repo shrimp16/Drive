@@ -2,7 +2,7 @@ import * as uploadManager from './src/upload.js'
 
 let input = document.getElementById('file');
 let body = document.getElementById('body');
-let progress = document.getElementById('progress-menu');
+let progress = document.getElementById('progress');
 
 function cleanBody() {
     body.innerHTML = "";
@@ -36,7 +36,7 @@ $('#upload').click(() => {
         <i class="fa-solid fa-arrow-up-from-bracket"></i>
     </div>`;
     progress.style.display = 'flex';
-    uploadManager.setupDragAndDrop();
+    uploadManager.start();
 })
 
 $('#files').click(() => {
