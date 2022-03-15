@@ -71,19 +71,22 @@ img:hover {
 
 .alert {
     display: none;
-    background-color: lightgreen;
     text-align: center;
     width: 60%;
     margin: auto;
     padding-top: 1rem;
     padding-bottom: 1rem;
     align-content: center;
-    border: 3px black solid;
+    border: 2px black solid;
     font-size: 1.5rem;
 }
 
+.alert > span {
+    color: gray;
+}
+
 .alert > span:hover {
-    color: white;
+    color: black;
     cursor: pointer;
 }
 
@@ -91,13 +94,12 @@ img:hover {
     height: 30rem;
     width: 30rem;
     margin: auto;
-    margin-bottom: 1rem;
     border: 3px gray dashed;
     background-color: lightgray;
     cursor: pointer;
 }
 
-.drag > P {
+.drag > p {
     display: flex;
     flex-direction: column;
     width: 80%;
@@ -142,6 +144,15 @@ img:hover {
         align-self: center;
     }
     .drag > p {
-        margin-top: 5rem;
+        display: none;
     }
+    .drag > i {
+        margin-top: 6.5rem;
+    }
+}
+
+.progress {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

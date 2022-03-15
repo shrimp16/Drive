@@ -2,9 +2,13 @@ import * as card from './src/cards.js';
 
 let input = document.getElementById('file');
 let body = document.getElementById('body');
+let progressBar = document.getElementById('progress');
+let progressText = document.getElementById('progress-text');
+let progress = document.getElementById('progress-menu');
 
 function cleanBody() {
     body.innerHTML = "";
+    progress.style.display = "none";
 }
 
 function createNewImage(image) {
@@ -21,7 +25,6 @@ function getFiles(number) {
                 createNewImage(imageBlob);
             })
     }
-    card.show('Files loaded', 'lightgreen');
 }
 
 function uploadFiles(data) {
@@ -29,7 +32,7 @@ function uploadFiles(data) {
     let dataToSend = new FormData();
 
     if(data.length > 10){
-        card.show('Thte file limit is 10', 'red');
+        card.show('The file limit is 10', 'lightgray');
         return
     }
 
@@ -43,14 +46,9 @@ function uploadFiles(data) {
 
 function sendToServer(files){
 
-    fetch('http://192.168.1.103:5000/upload', {
-        method: 'POST',
-        body: files,
-    }).then(() => {
-        card.show('Files sent with success', 'lightgreen');
-    }).catch((err) => {
-        card.show(err.message, 'red');
-    })
+    let xhr = new XMLHttpRequest();
+    xhr.open('POST', 'http://192.168.1.103:5000/upload');
+    xhr.send(files);
 
 }
 
@@ -64,6 +62,8 @@ $('#upload').click(() => {
         <p>Drag your files to here or click to select files</p>
         <i class="fa-solid fa-arrow-up-from-bracket"></i>
     </div>`;
+
+    progress.style.display = 'flex';
 
     let uploadMenu = document.querySelector('#drag');
 
@@ -89,5 +89,7 @@ $('#upload').click(() => {
 
 $('#files').click(() => {
     cleanBody();
-    fetch('http://192.168.1.103:5000/files').then((response) => response.json()).then((response) => getFiles(response));
+    fetch('http://192.168.1.103:5000/files')
+    .then((response) => response.json())
+    .then((response) => getFiles(response));
 })
