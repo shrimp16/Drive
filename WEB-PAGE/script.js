@@ -48,6 +48,16 @@ function sendToServer(files){
 
     let xhr = new XMLHttpRequest();
     xhr.open('POST', 'http://192.168.1.103:5000/upload');
+
+    xhr.upload.addEventListener('progress', ({loaded, total}) => {
+        let load = Math.floor((loaded / total) * 100);
+        progressBar.max = 100;
+        progressBar.value = load;
+        progressText.innerText = load + '%';
+        if(loaded === total){
+            progressText.innerText = 'File sent!'
+        }
+    })
     xhr.send(files);
 
 }
