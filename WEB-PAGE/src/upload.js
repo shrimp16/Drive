@@ -7,7 +7,7 @@ export function start() {
     let uploadMenu = document.querySelector('#drag');
 
     progressText.innerText = "0%";
-    progressBar.value = 0;
+    progressBar.style.width = '0%';
 
     uploadMenu.addEventListener('click', () => {
         $('#file').trigger('click');
@@ -54,7 +54,7 @@ function sendToServer(files){
     xhr.upload.addEventListener('progress', ({loaded, total}) => {
         let load = Math.floor((loaded / total) * 100);
         progressBar.max = 100;
-        progressBar.value = load;
+        progressBar.style.width = `${load}%`;
         progressText.innerText = load + '%';
         if(loaded === total){
             progressText.innerText = 'File sent!'

@@ -35,7 +35,7 @@ $('#upload').click(() => {
         <p>Drag your files to here or click to select files</p>
         <i class="fa-solid fa-arrow-up-from-bracket"></i>
     </div>`;
-    progress.style.display = 'flex';
+    progress.style.display = 'block';
     uploadManager.start();
 })
 
