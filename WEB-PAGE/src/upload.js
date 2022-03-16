@@ -57,7 +57,7 @@ function sendToServer(files){
         progressBar.style.width = `${load}%`;
         progressText.innerText = load + '%';
         if(loaded === total){
-            progressText.innerText = 'File sent!'
+            progressText.innerText = 'File sent!';
         }
     })
     xhr.send(files);
