@@ -155,19 +155,22 @@ img:hover {
     }
 }
 
-.bar-container {
+.progress {
     display: none;
+}
+
+.progress > p {
+    text-align: center;
+    font-size: 1.1rem;
+    margin-top: 5px;
+}
+
+.bar-container {
     width: 150px;
     height: 10px;
     border: 2px black solid;
     border-radius: 10px;
     margin: auto;
-}
-
-.bar-container > p {
-    text-align: center;
-    font-size: 1.1rem;
-    margin-top: 5px;
 }
 
 .bar {

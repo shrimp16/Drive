@@ -4,24 +4,40 @@ let input = document.getElementById('file');
 let body = document.getElementById('body');
 let progress = document.getElementById('progress');
 
+let images = [];
+
 function cleanBody() {
     body.innerHTML = "";
     progress.style.display = "none";
 }
 
-function createNewImage(image) {
+function createNewImage(image, id) {
     let img = new Image();
     img.src = URL.createObjectURL(image);
+    img.id = id;
     body.appendChild(img);
+    images.push(img);
 }
 
 function getFiles(number) {
+    images = [];
     for (let i = 0; i < number; i++) {
         fetch('http://192.168.1.103:5000/file/' + i)
             .then(response => response.blob())
             .then((imageBlob) => {
-                createNewImage(imageBlob);
+                createNewImage(imageBlob, i);
             })
+    }
+    setTimeout(() => {
+        setupDelete()
+    }, number * 15);
+}
+
+function setupDelete(){
+    for(let i = 0; i < images.length; i++){
+        images[i].addEventListener('click', () => {
+            console.log(images[i].id);
+        })
     }
 }
 
