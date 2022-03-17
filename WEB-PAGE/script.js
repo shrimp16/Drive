@@ -5,7 +5,12 @@ let body = document.getElementById('body');
 let progress = document.getElementById('progress');
 let optionsCard = document.getElementById('options-card');
 
+let deleteButton = document.getElementById('delete');
+let openButton = document.getElementById('open');
+
 let images = [];
+
+let yes = false;
 
 function cleanBody() {
     body.innerHTML = "";
@@ -34,13 +39,24 @@ function getFiles(number) {
     }, number * 15);
 }
 
-function setupDelete(){
-    for(let i = 0; i < images.length; i++){
+function setupDelete() {
+    for (let i = 0; i < images.length; i++) {
         images[i].addEventListener('click', () => {
-            console.log(images[i].id);
             optionsCard.style.display = "block";
+            deleteButton.myParam = images[i].id;
+            openButton.myParam = images[i].id;
+            deleteButton.addEventListener('click', remove);
+            openButton.addEventListener('click', open);
         })
     }
+}
+
+function remove(x) {
+    console.log("removing   " + x.currentTarget.myParam);
+}
+
+function open(x) {
+    console.log("opening   " + x.currentTarget.myParam);
 }
 
 input.addEventListener('change', () => {
@@ -60,6 +76,6 @@ $('#upload').click(() => {
 $('#files').click(() => {
     cleanBody();
     fetch('http://192.168.1.103:5000/files')
-    .then((response) => response.json())
-    .then((response) => getFiles(response));
+        .then((response) => response.json())
+        .then((response) => getFiles(response));
 })
