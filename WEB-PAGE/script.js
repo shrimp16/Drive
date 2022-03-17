@@ -10,8 +10,6 @@ let openButton = document.getElementById('open');
 
 let images = [];
 
-let yes = false;
-
 function cleanBody() {
     body.innerHTML = "";
     progress.style.display = "none";
@@ -31,20 +29,22 @@ function getFiles(number) {
         fetch('http://192.168.1.103:5000/file/' + i)
             .then(response => response.blob())
             .then((imageBlob) => {
+                console.log(i);
                 createNewImage(imageBlob, i);
+                if(i === number - 1){
+                    setupDelete();
+                }
             })
     }
-    setTimeout(() => {
-        setupDelete()
-    }, number * 15);
 }
 
 function setupDelete() {
     for (let i = 0; i < images.length; i++) {
         images[i].addEventListener('click', () => {
             optionsCard.style.display = "block";
-            deleteButton.myParam = images[i].id;
-            openButton.myParam = images[i].id;
+            optionsCard.onclick = () => { optionsCard.style.display = 'none'; }
+            deleteButton.myParam = images[i];
+            openButton.myParam = images[i];
             deleteButton.addEventListener('click', remove);
             openButton.addEventListener('click', open);
         })
@@ -52,11 +52,11 @@ function setupDelete() {
 }
 
 function remove(x) {
-    console.log("removing   " + x.currentTarget.myParam);
+    alert("removing   " + x.currentTarget.myParam);
 }
 
 function open(x) {
-    console.log("opening   " + x.currentTarget.myParam);
+    window.open(x.currentTarget.myParam.src);
 }
 
 input.addEventListener('change', () => {
@@ -70,6 +70,7 @@ $('#upload').click(() => {
         <i class="fa-solid fa-arrow-up-from-bracket"></i>
     </div>`;
     progress.style.display = 'block';
+    optionsCard.style.display = 'none';
     uploadManager.start();
 })
 

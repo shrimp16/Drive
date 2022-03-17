@@ -180,9 +180,9 @@ img:hover {
 .card-container {
     position: absolute;
     display: none;
-    height: 7.5rem;
+    height: 15rem;
     width: 100%;
-    margin-top: 5rem;
+    margin-top: 3rem;
 }
 
 .card {
