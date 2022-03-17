@@ -3,6 +3,7 @@ import * as uploadManager from './src/upload.js'
 let input = document.getElementById('file');
 let body = document.getElementById('body');
 let progress = document.getElementById('progress');
+let optionsCard = document.getElementById('options-card');
 
 let images = [];
 
@@ -37,6 +38,7 @@ function setupDelete(){
     for(let i = 0; i < images.length; i++){
         images[i].addEventListener('click', () => {
             console.log(images[i].id);
+            optionsCard.style.display = "block";
         })
     }
 }

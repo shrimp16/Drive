@@ -23,19 +23,16 @@ body {
     font-size: 3rem;
 }
 
-button {
+.buttons {
     font-size: 1.35rem;
     width: 160px;
     margin-left: 10px;
-}
-
-.options > button {
     background-color: white;
     color: black;
     transition: 0.6s;
 }
 
-.options > button:hover {
+.buttons:hover{
     background-color: black;
     color: white;
     cursor: pointer;
@@ -178,4 +175,25 @@ img:hover {
     height: 100%;
     background-color: lightgray;
     border-radius: 10px;
+}
+
+.card-container {
+    position: absolute;
+    display: none;
+    height: 7.5rem;
+    width: 100%;
+    margin-top: 5rem;
+}
+
+.card {
+    display: flex;
+    background-color: lightgray;
+    height: 100%;
+    width: 30%;
+    border: 2px black solid;
+    margin: auto;
+}
+
+.card > button {
+    margin: auto;
 }
