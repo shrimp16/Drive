@@ -7,8 +7,7 @@ let optionsCard = document.getElementById('options-card');
 
 let deleteButton = document.getElementById('delete');
 let openButton = document.getElementById('open');
-
-let images = [];
+let closeButton = document.getElementById('close');
 
 function cleanBody() {
     body.innerHTML = "";
@@ -20,43 +19,46 @@ function createNewImage(image, id) {
     img.src = URL.createObjectURL(image);
     img.id = id;
     body.appendChild(img);
-    images.push(img);
 }
 
-function getFiles(number) {
-    images = [];
+async function getFiles(number) {
     for (let i = 0; i < number; i++) {
-        fetch('http://192.168.1.103:5000/file/' + i)
+        await fetch('http://192.168.1.103:5000/file/' + i)
             .then(response => response.blob())
             .then((imageBlob) => {
                 console.log(i);
                 createNewImage(imageBlob, i);
-                if(i === number - 1){
-                    setupDelete();
-                }
             })
     }
+    setupDelete();
 }
 
 function setupDelete() {
+    let images = document.querySelectorAll('img');
     for (let i = 0; i < images.length; i++) {
         images[i].addEventListener('click', () => {
             optionsCard.style.display = "block";
-            optionsCard.onclick = () => { optionsCard.style.display = 'none'; }
             deleteButton.myParam = images[i];
             openButton.myParam = images[i];
             deleteButton.addEventListener('click', remove);
             openButton.addEventListener('click', open);
+            closeButton.addEventListener('click', close);
         })
     }
 }
 
 function remove(x) {
+    close();
     alert("removing   " + x.currentTarget.myParam);
 }
 
 function open(x) {
+    close();
     window.open(x.currentTarget.myParam.src);
+}
+
+function close() {
+    optionsCard.style.display = 'none';
 }
 
 input.addEventListener('change', () => {
