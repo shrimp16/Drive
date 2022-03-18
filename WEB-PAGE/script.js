@@ -1,23 +1,19 @@
-import * as uploadManager from './src/upload.js'
+import * as uploadManager from './src/upload.js';
+import * as card from './src/cards.js';
 
 let input = document.getElementById('file');
 let body = document.getElementById('body');
 let progress = document.getElementById('progress');
 let optionsCard = document.getElementById('options-card');
 
-let deleteButton = document.getElementById('delete');
-let openButton = document.getElementById('open');
-let closeButton = document.getElementById('close');
-
 function cleanBody() {
     body.innerHTML = "";
     progress.style.display = "none";
 }
 
-function createNewImage(image, id) {
+function createNewImage(image) {
     let img = new Image();
     img.src = URL.createObjectURL(image);
-    img.id = id;
     body.appendChild(img);
 }
 
@@ -26,39 +22,10 @@ async function getFiles(number) {
         await fetch('http://192.168.1.103:5000/file/' + i)
             .then(response => response.blob())
             .then((imageBlob) => {
-                console.log(i);
-                createNewImage(imageBlob, i);
+                createNewImage(imageBlob);
             })
     }
-    setupDelete();
-}
-
-function setupDelete() {
-    let images = document.querySelectorAll('img');
-    for (let i = 0; i < images.length; i++) {
-        images[i].addEventListener('click', () => {
-            optionsCard.style.display = "block";
-            deleteButton.myParam = images[i];
-            openButton.myParam = images[i];
-            deleteButton.addEventListener('click', remove);
-            openButton.addEventListener('click', open);
-            closeButton.addEventListener('click', close);
-        })
-    }
-}
-
-function remove(x) {
-    close();
-    alert("removing   " + x.currentTarget.myParam);
-}
-
-function open(x) {
-    close();
-    window.open(x.currentTarget.myParam.src);
-}
-
-function close() {
-    optionsCard.style.display = 'none';
+    card.setupOptionsCard();
 }
 
 input.addEventListener('change', () => {
@@ -73,7 +40,7 @@ $('#upload').click(() => {
     </div>`;
     progress.style.display = 'block';
     optionsCard.style.display = 'none';
-    uploadManager.start();
+    uploadManager.setupUpload();
 })
 
 $('#files').click(() => {

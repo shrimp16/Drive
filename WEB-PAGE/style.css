@@ -80,6 +80,7 @@ img:hover {
     align-content: center;
     border: 2px black solid;
     font-size: 1.5rem;
+    background-color: lightgray;
 }
 
 .alert > span {

@@ -3,7 +3,7 @@ import * as card from './cards.js';
 let progressBar = document.getElementById('progress-bar');
 let progressText = document.getElementById('progress-text');
 
-export function start() {
+export function setupUpload() {
     let uploadMenu = document.querySelector('#drag');
 
     progressText.innerText = "0%";
@@ -34,7 +34,7 @@ export function uploadFiles(data) {
     let dataToSend = new FormData();
 
     if(data.length > 10){
-        card.show('The file limit is 10', 'lightgray');
+        card.show(`The file limit is 10`);
         return
     }
 
