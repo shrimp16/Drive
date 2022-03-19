@@ -45,6 +45,12 @@ app.listen(PORT, () => {
 // Allows Cross-origin resource sharing (cors)
 app.use(cors());
 
+app.use(express.static('WEB-PAGE'));
+
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/WEB-PAGE/index.html');
+})
+
 app.post('/upload', upload.array('files', 10), (req, res) => {
     console.log(req.files[0]);
     addFileName(req.files);

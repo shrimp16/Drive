@@ -197,7 +197,7 @@ img:hover {
     display: flex;
     background-color: lightgray;
     height: 100%;
-    width: 40%;
+    width: 50%;
     border: 2px black solid;
     margin: auto;
 }
