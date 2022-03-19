@@ -1,4 +1,5 @@
 import * as card from './cards.js';
+import * as config from './config.js';
 
 let progressBar = document.getElementById('progress-bar');
 let progressText = document.getElementById('progress-text');
@@ -33,7 +34,7 @@ export function uploadFiles(data) {
 
     let dataToSend = new FormData();
 
-    if(data.length > 10){
+    if(data.length > config.FILE_LIMIT){
         card.show(`The file limit is 10`);
         return
     }
@@ -49,7 +50,7 @@ export function uploadFiles(data) {
 function sendToServer(files){
 
     let xhr = new XMLHttpRequest();
-    xhr.open('POST', 'http://192.168.1.103:5000/upload');
+    xhr.open('POST', `${config.ADDRESS}/upload`);
 
     xhr.upload.addEventListener('progress', ({loaded, total}) => {
         let load = Math.floor((loaded / total) * 100);

@@ -1,5 +1,6 @@
 import * as uploadManager from './src/upload.js';
 import * as card from './src/cards.js';
+import * as config from './src/config.js';
 
 let input = document.getElementById('file');
 let body = document.getElementById('body');
@@ -19,7 +20,7 @@ function createNewImage(image) {
 
 async function getFiles(number) {
     for (let i = 0; i < number; i++) {
-        await fetch('http://192.168.1.103:5000/file/' + i)
+        await fetch(`${config.ADDRESS}/file/${i}`)
             .then(response => response.blob())
             .then((imageBlob) => {
                 createNewImage(imageBlob);
@@ -45,7 +46,7 @@ $('#upload').click(() => {
 
 $('#files').click(() => {
     cleanBody();
-    fetch('http://192.168.1.103:5000/files')
+    fetch(`${config.ADDRESS}/files`)
         .then((response) => response.json())
         .then((response) => getFiles(response));
 })

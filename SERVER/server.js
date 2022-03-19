@@ -4,8 +4,9 @@ const cors = require('cors');
 const path = require('path');
 const fs = require('fs');
 
-const app = express();
 const PORT = 5000;
+
+const app = express();
 
 // Configure Multer
 const fileStorageEngine = multer.diskStorage({
@@ -42,10 +43,10 @@ app.listen(PORT, () => {
     console.log(`Server running on port: ${PORT}`)
 });
 
+app.use(express.static(__dirname + '/WEB-PAGE'));
 // Allows Cross-origin resource sharing (cors)
 app.use(cors());
 
-app.use(express.static('WEB-PAGE'));
 
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/WEB-PAGE/index.html');
