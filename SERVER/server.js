@@ -27,7 +27,11 @@ function addFileName(uploadFiles){
     for(let i = 0; i < uploadFiles.length; i++){
         fileList.push({'file': uploadFiles[i].filename})
     }
-    fs.writeFile('files.json', JSON.stringify(fileList, null, 2), (err) => {
+    updateFile(fileList);
+}
+
+function updateFile(data){
+    fs.writeFile('files.json', JSON.stringify(data, null, 2), (err) => {
         if(err){
             console.log(err.message);
         }
@@ -81,4 +85,21 @@ app.get('/file/:id', (req, res) => {
 app.get('/files', (req, res) => {
     let files = getFiles();
     res.send(JSON.stringify(files.length));
+})
+
+app.delete('/delete/:id', (req, res) => {
+    let files = getFiles();
+    console.log(files[req.params.id]);
+    try {
+        fs.unlinkSync('./storage/' + files[req.params.id].file);
+        if(req.params.id === 0){
+            files.shift();
+        }else{
+            files.splice(req.params.id, req.params.id++);
+        }
+        updateFile(files);
+        console.log("Done");
+    } catch (err) {
+        console.log(err);
+    }
 })
