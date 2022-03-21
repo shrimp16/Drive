@@ -12,9 +12,10 @@ function cleanBody() {
     progress.style.display = "none";
 }
 
-function createNewImage(image) {
+function createNewImage(image, id) {
     let img = new Image();
     img.src = URL.createObjectURL(image);
+    img.id = id;
     body.appendChild(img);
 }
 
@@ -23,7 +24,7 @@ async function getFiles(number) {
         await fetch(`${config.ADDRESS}/file/${i}`)
             .then(response => response.blob())
             .then((imageBlob) => {
-                createNewImage(imageBlob);
+                createNewImage(imageBlob, i);
             })
     }
     card.setupOptionsCard();

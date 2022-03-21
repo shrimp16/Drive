@@ -57,7 +57,6 @@ app.get('/', (req, res) => {
 })
 
 app.post('/upload', upload.array('files', 10), (req, res) => {
-    console.log(req.files[0]);
     addFileName(req.files);
     res.send('Done!');
 });
@@ -77,7 +76,7 @@ app.get('/file/:id', (req, res) => {
         if(err){
             console.log(err.message);
         } else {
-            console.log('File sent!')
+            //console.log('File sent!')
         }
     })
 })
@@ -89,17 +88,24 @@ app.get('/files', (req, res) => {
 
 app.delete('/delete/:id', (req, res) => {
     let files = getFiles();
-    console.log(files[req.params.id]);
+    let id = parseInt(req.params.id);
+
+    console.log("test");
+
     try {
-        fs.unlinkSync('./storage/' + files[req.params.id].file);
-        if(req.params.id === 0){
-            files.shift();
-        }else{
-            files.splice(req.params.id, req.params.id++);
-        }
-        updateFile(files);
-        console.log("Done");
+        fs.unlinkSync('./storage/' + files[id].file);
+        console.log("removed");
     } catch (err) {
         console.log(err);
     }
+
+    if(id === 0){
+        files.shift();
+    }else{
+        files.splice(id, 1);
+    }
+
+    updateFile(files);
+
+    res.send("thing");
 })

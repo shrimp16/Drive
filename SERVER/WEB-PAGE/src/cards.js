@@ -1,3 +1,5 @@
+import * as config from './config.js';
+
 let infoCard = document.getElementById('alert');
 let infoCardText = document.getElementById('alert-text');
 
@@ -21,8 +23,8 @@ export function setupOptionsCard() {
 
             optionsCard.style.display = "block";
 
-            deleteButton.myParam = images[i];
-            openButton.myParam = images[i];
+            deleteButton.myParam = images[i].id;
+            openButton.myParam = images[i].id;
             
             deleteButton.addEventListener('click', remove);
             openButton.addEventListener('click', open);
@@ -32,8 +34,15 @@ export function setupOptionsCard() {
 }
 
 function remove(x) {
+    console.log(x.currentTarget.myParam);
     close();
-    alert("removing   " + x.currentTarget.myParam);
+    fetch(`${config.ADDRESS}/delete/${x.currentTarget.myParam}`, {
+        method: 'DELETE',
+    }).then(response => response.text())
+    .then((response) => {
+        console.log(response);
+        $('#files').trigger('click');
+    })
 }
 
 function open(x) {
