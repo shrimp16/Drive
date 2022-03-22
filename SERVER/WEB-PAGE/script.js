@@ -16,8 +16,20 @@ function cleanBody() {
 
 function createNewImage(image, id) {
     let img = new Image();
-    img.src = URL.createObjectURL(image);
-    img.alt = image.type;
+    let str = image.type;
+    let arr = str.split('/');
+    console.log(arr);
+    switch (arr[0]) {
+        case 'image':
+            img.src = URL.createObjectURL(image);
+            break;
+        case 'text':
+            img.src = '/img/text.png';
+            break;
+            case 'application':
+                img.src = '/img/rar.png';
+                break;
+    }
     img.id = id;
     body.appendChild(img);
     images.push(URL.createObjectURL(image));
