@@ -40,6 +40,13 @@ export function setupOptionsCard() {
 
 function remove(x) {
     console.log(x.currentTarget.myParam);
+
+    if(x.currentTarget.myParam === 0){
+        filesURL.shift();
+    }else{
+        filesURL.splice(x.currentTarget.myParam, 1);
+    }
+
     close();
     fetch(`${config.ADDRESS}/delete/${x.currentTarget.myParam}`, {
         method: 'DELETE',
