@@ -7,6 +7,8 @@ let body = document.getElementById('body');
 let progress = document.getElementById('progress');
 let optionsCard = document.getElementById('options-card');
 
+let images = [];
+
 function cleanBody() {
     body.innerHTML = "";
     progress.style.display = "none";
@@ -15,8 +17,10 @@ function cleanBody() {
 function createNewImage(image, id) {
     let img = new Image();
     img.src = URL.createObjectURL(image);
+    img.alt = image.type;
     img.id = id;
     body.appendChild(img);
+    images.push(URL.createObjectURL(image));
 }
 
 async function getFiles(number) {
@@ -28,6 +32,7 @@ async function getFiles(number) {
             })
     }
     card.setupOptionsCard();
+    card.setFilesURL(images);
 }
 
 input.addEventListener('change', () => {

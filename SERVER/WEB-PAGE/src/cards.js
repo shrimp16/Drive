@@ -9,6 +9,11 @@ let deleteButton = document.getElementById('delete');
 let openButton = document.getElementById('open');
 let closeButton = document.getElementById('close');
 
+let filesURL = [];
+
+export function setFilesURL(data){
+    filesURL = data;
+}
 
 export function show(text){
     infoCardText.innerText = text;
@@ -23,8 +28,8 @@ export function setupOptionsCard() {
 
             optionsCard.style.display = "block";
 
-            deleteButton.myParam = images[i].id;
-            openButton.myParam = images[i].id;
+            deleteButton.myParam = i;
+            openButton.myParam = i;
             
             deleteButton.addEventListener('click', remove);
             openButton.addEventListener('click', open);
@@ -47,7 +52,7 @@ function remove(x) {
 
 function open(x) {
     close();
-    window.open(x.currentTarget.myParam.src);
+    window.open(filesURL[x.currentTarget.myParam]);
 }
 
 function close() {
