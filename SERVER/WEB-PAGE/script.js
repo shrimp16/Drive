@@ -1,6 +1,7 @@
 import * as uploadManager from './src/upload.js';
 import * as card from './src/cards.js';
 import * as config from './src/config.js';
+import { setIcon } from './icons/icons.js';
 
 let input = document.getElementById('file');
 let body = document.getElementById('body');
@@ -16,13 +17,17 @@ function cleanBody() {
     drag.style.display = "none";
 }
 
-function createNewImage(image, id) {
+function createNewImage(image) {
     let img = new Image();
     let str = image.type;
     let arr = str.split('/');
-    console.log(str);
 
-    img.id = id;
+    if(arr[0] === 'image'){
+        img.src = URL.createObjectURL(image);
+    }else{
+        img.src = setIcon(str);
+    }
+    console.log(str);
     body.appendChild(img);
     images.push(URL.createObjectURL(image));
 }
@@ -32,7 +37,7 @@ async function getFiles(number) {
         await fetch(`${config.ADDRESS}/file/${i}`)
             .then(response => response.blob())
             .then((imageBlob) => {
-                createNewImage(imageBlob, i);
+                createNewImage(imageBlob);
             })
     }
     card.setupOptionsCard();
