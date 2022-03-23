@@ -2,6 +2,7 @@ const TEXT = './icons/text.png';
 const RAR = './icons/rar.png';
 const WORD = './icons/word.png';
 const PDF = './icons/pdf.png';
+const DEFAULT = './icons/default.png';
 
 export function setIcon(type) {
     switch (type) {
@@ -13,5 +14,7 @@ export function setIcon(type) {
             return WORD;
         case 'application/pdf':
             return PDF;
+        default:
+            return DEFAULT;
     }
 }
