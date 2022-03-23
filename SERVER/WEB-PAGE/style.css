@@ -99,6 +99,7 @@ img:hover {
     border: 3px gray dashed;
     background-color: lightgray;
     cursor: pointer;
+    margin-top: 1rem;
 }
 
 .drag > p {
@@ -162,6 +163,7 @@ img:hover {
 
 .progress {
     display: none;
+    margin-top: 0.5rem;
 }
 
 .progress > p {

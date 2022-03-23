@@ -6,30 +6,22 @@ let input = document.getElementById('file');
 let body = document.getElementById('body');
 let progress = document.getElementById('progress');
 let optionsCard = document.getElementById('options-card');
+let drag = document.getElementById("drag");
 
 let images = [];
 
 function cleanBody() {
     body.innerHTML = "";
     progress.style.display = "none";
+    drag.style.display = "none";
 }
 
 function createNewImage(image, id) {
     let img = new Image();
     let str = image.type;
     let arr = str.split('/');
-    console.log(arr);
-    switch (arr[0]) {
-        case 'image':
-            img.src = URL.createObjectURL(image);
-            break;
-        case 'text':
-            img.src = '/img/text.png';
-            break;
-            case 'application':
-                img.src = '/img/rar.png';
-                break;
-    }
+    console.log(str);
+
     img.id = id;
     body.appendChild(img);
     images.push(URL.createObjectURL(image));
@@ -52,11 +44,8 @@ input.addEventListener('change', () => {
 })
 
 $('#upload').click(() => {
-    body.innerHTML = `
-    <div id="drag" class="drag">
-        <p>Drag your files to here or click to select files</p>
-        <i class="fa-solid fa-arrow-up-from-bracket"></i>
-    </div>`;
+    cleanBody();
+    drag.style.display = 'block';
     progress.style.display = 'block';
     optionsCard.style.display = 'none';
     uploadManager.setupUpload();
