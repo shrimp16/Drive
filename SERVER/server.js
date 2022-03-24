@@ -76,7 +76,7 @@ app.get('/file/:id', (req, res) => {
         if(err){
             console.log(err.message);
         } else {
-            //console.log('File sent!')
+            console.log('File sent!');
         }
     })
 })
@@ -90,11 +90,9 @@ app.delete('/delete/:id', (req, res) => {
     let files = getFiles();
     let id = parseInt(req.params.id);
 
-    console.log("test");
-
     try {
         fs.unlinkSync('./storage/' + files[id].file);
-        console.log("removed");
+        console.log("Deleted File");
     } catch (err) {
         console.log(err);
     }
@@ -107,5 +105,5 @@ app.delete('/delete/:id', (req, res) => {
 
     updateFile(files);
 
-    res.send("thing");
+    res.send("Deleted File");
 })
