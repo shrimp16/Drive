@@ -1,9 +1,11 @@
-$bg-color: whitesmoke;
-$btn-color: white;
-$hover-color: black;
-$main-color: gray;
-$main-light-color: lightgray;
-$transition-time: 0.6s;
+:root {
+    --bg-color: whitesmoke;
+    --btn-color: white;
+    --hover-color: black;
+    --main-color: gray;
+    --main-light-color: lightgray;
+    --transition-time: 0.6s;
+}
 
 * {
     margin: 0;
@@ -12,7 +14,7 @@ $transition-time: 0.6s;
 }
 
 body {
-    background-color: $bg-color;
+    background-color: var(--bg-color);
 }
 
 img {
@@ -40,14 +42,14 @@ img {
     font-size: 1.35rem;
     width: 10rem;
     margin-left: 10px;
-    background-color: $btn-color;
-    color: $hover-color;
-    transition: $transition-time;
+    background-color: var(--btn-color);
+    color: var(--hover-color);
+    transition: var(--transition-time);
 }
 
 .buttons:hover {
-    background-color: $hover-color;
-    color: $btn-color;
+    background-color: var(--hover-color);
+    color: var(--btn-color);
     cursor: pointer;
 }
 
@@ -69,7 +71,7 @@ img {
     img {
         margin: auto;
         margin-top: 1rem;
-        border: 1px $hover-color solid;
+        border: 1px var(--hover-color) solid;
     }
 }
 
@@ -80,16 +82,16 @@ img {
     margin: auto;
     padding: 1rem 0;
     align-content: center;
-    border: 2px $hover-color solid;
+    border: 2px var(--hover-color) solid;
     font-size: 1.5rem;
-    background-color: $main-light-color;
+    background-color: var(--main-light-color);
 
     span {
-        color: $main-color;
+        color: var(--main-color);
     }
 
     span:hover {
-        color: $hover-color;
+        color: var(--hover-color);
         cursor: pointer;
     }
 }
@@ -100,8 +102,8 @@ img {
     width: 30rem;
     margin: auto;
     margin-top: 1rem;
-    border: 3px $main-color dashed;
-    background-color: $main-light-color;
+    border: 3px var(--main-color) dashed;
+    background-color: var(--main-light-color);
     cursor: pointer;
 
     p {
@@ -125,10 +127,10 @@ img {
 }
 
 .drag-hover {
-    border: 3px $hover-color dashed;
+    border: 3px var(--hover-color) dashed;
     
     i {
-        color: $hover-color;
+        color: var(--hover-color);
     }
 }
 
@@ -146,7 +148,7 @@ img {
 .bar-container {
     width: 10rem;
     height: 0.5rem;
-    border: 2px $hover-color solid;
+    border: 2px var(--hover-color) solid;
     border-radius: 10px;
     margin: auto;
 }
@@ -154,7 +156,7 @@ img {
 .bar {
     width: 0%;
     height: 100%;
-    background-color: $main-light-color;
+    background-color: var(--main-light-color);
     border-radius: 10px;
 }
 
@@ -168,10 +170,10 @@ img {
 
 .card {
     display: flex;
-    background-color: $main-light-color;
+    background-color: var(--main-light-color);
     height: 100%;
     width: 50%;
-    border: 2px $hover-color solid;
+    border: 2px var(--hover-color) solid;
     margin: auto;
 
     button {
