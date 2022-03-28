@@ -178,3 +178,38 @@ img {
         margin: auto;
     }
 }
+
+@media (max-width: 35rem){
+    .options {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+
+        * {
+            margin-top: 5px;
+            padding: 0 5px;
+        }
+    }
+
+    .drag {
+        width: 15rem;
+        height: 15rem;
+        align-items: center;
+
+        p {
+            display: none;
+        }
+
+        i {
+            margin-top: 6.5rem;
+        }
+    }
+}
+
+@media (max-width: 80rem){
+    .card {
+        display: flex;
+        flex-direction: column;
+    }
+}
