@@ -12,16 +12,16 @@ To use the app you will need to first clone the repository
 git clone https://github.com/shrimp16/Drive.git
 ```
 
+To be able to run the app you'll have to install dependencies
+
+```
+npm i
+```
+
 Then to start the server you have to go to the "SERVER" directory and run the command
 
 ```
 node server.js
-```
-
-To start the web page it's up to you about what do you want to use, in my case, I used [http-server](https://www.npmjs.com/package/http-server) with the following command
-
-```
-http-server WEB-PAGE
 ```
 
 # Technologies
@@ -34,7 +34,6 @@ http-server WEB-PAGE
 - Express.js
 - FS.js
 - Multer.js
-- Http-server
 
 # Screenshots
 
