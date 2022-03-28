@@ -1,0 +1,180 @@
+$bg-color: whitesmoke;
+$btn-color: white;
+$hover-color: black;
+$main-color: gray;
+$main-light-color: lightgray;
+$transition-time: 0.6s;
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Syne Mono', monospace;
+}
+
+body {
+    background-color: $bg-color;
+}
+
+img {
+    height: 15rem;
+    width: 15rem;
+    cursor: pointer;
+}
+
+.file {
+    display: none;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h1 {
+        margin-bottom: 10px;
+        font-size: 3rem;
+    }
+}
+
+.buttons {
+    font-size: 1.35rem;
+    width: 10rem;
+    margin-left: 10px;
+    background-color: $btn-color;
+    color: $hover-color;
+    transition: $transition-time;
+}
+
+.buttons:hover {
+    background-color: $hover-color;
+    color: $btn-color;
+    cursor: pointer;
+}
+
+.center {
+    display: flex;
+    width: 80%;
+    margin: auto;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+.body {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    margin: auto;
+    margin-top: 1rem;
+
+    img {
+        margin: auto;
+        margin-top: 1rem;
+        border: 1px $hover-color solid;
+    }
+}
+
+.alert {
+    display: none;
+    text-align: center;
+    width: 60%;
+    margin: auto;
+    padding: 1rem 0;
+    align-content: center;
+    border: 2px $hover-color solid;
+    font-size: 1.5rem;
+    background-color: $main-light-color;
+
+    span {
+        color: $main-color;
+    }
+
+    span:hover {
+        color: $hover-color;
+        cursor: pointer;
+    }
+}
+
+.drag {
+    display: none;
+    height: 30rem;
+    width: 30rem;
+    margin: auto;
+    margin-top: 1rem;
+    border: 3px $main-color dashed;
+    background-color: $main-light-color;
+    cursor: pointer;
+
+    p {
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+        margin: auto;
+        margin-top: 14rem;
+        align-items: center;
+        text-align: center;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    i {
+        width: 100%;
+        margin-top: 1rem;
+        font-size: 2rem;
+        text-align: center;
+        color: gray;
+    }
+}
+
+.drag-hover {
+    border: 3px $hover-color dashed;
+    
+    i {
+        color: $hover-color;
+    }
+}
+
+.progress {
+    display: none;
+    margin-top: 0.5rem;
+
+    p {
+        text-align: center;
+        font-size: 1.1rem;
+        margin-top: 5px;
+    }
+}
+
+.bar-container {
+    width: 10rem;
+    height: 0.5rem;
+    border: 2px $hover-color solid;
+    border-radius: 10px;
+    margin: auto;
+}
+
+.bar {
+    width: 0%;
+    height: 100%;
+    background-color: $main-light-color;
+    border-radius: 10px;
+}
+
+.card-container {
+    display: none;
+    position: fixed;
+    height: 7.5rem;
+    width: 100%;
+    top: 40%;
+}
+
+.card {
+    display: flex;
+    background-color: $main-light-color;
+    height: 100%;
+    width: 50%;
+    border: 2px $hover-color solid;
+    margin: auto;
+
+    button {
+        margin: auto;
+    }
+}
