@@ -45,12 +45,12 @@ img {
     background-color: var(--btn-color);
     color: var(--hover-color);
     transition: var(--transition-time);
-}
 
-.buttons:hover {
-    background-color: var(--hover-color);
-    color: var(--btn-color);
-    cursor: pointer;
+    &:hover{
+        background-color: var(--hover-color);
+        color: var(--btn-color);
+        cursor: pointer;
+    }
 }
 
 .center {
