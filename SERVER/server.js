@@ -57,7 +57,7 @@ function auth(user){
     let users = getUsers();
     for(let i = 0; i < users.length; i++){
         if(users[i].username === user.username && users[i].password === user.password){
-            return "Correct";
+            return users[i].id;
         }
     }
     return "Wrong";
@@ -155,6 +155,13 @@ app.post('/register', (req, res) => {
 })
 
 app.post('/login', (req, res) => {
-    console.log(auth(req.body));
-    res.send("WIP");
+
+    let log = auth(req.body);
+
+    if(log === 'Wrong'){
+        res.send('Username or password is wrong');
+        return;
+    }
+    
+    res.send(`${log}`);
 })
