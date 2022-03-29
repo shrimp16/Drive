@@ -23,40 +23,61 @@ const fileStorageEngine = multer.diskStorage({
 
 const upload = multer({ storage: fileStorageEngine });
 
-function addFileName(uploadFiles){
+function addFileName(uploadFiles) {
     let fileList = getFiles();
-    for(let i = 0; i < uploadFiles.length; i++){
-        fileList.push({'file': uploadFiles[i].filename})
+    for (let i = 0; i < uploadFiles.length; i++) {
+        fileList.push({ 'file': uploadFiles[i].filename })
     }
     updateFile(fileList);
 }
 
-function updateFile(data){
+function updateFile(data) {
     fs.writeFile('users_data/files.json', JSON.stringify(data, null, 2), (err) => {
-        if(err) console.log(err.message);
+        if (err) console.log(err.message);
     })
 }
 
-function addUser(user){
+function addUser(user) {
     fs.writeFile('users_data/users.json', JSON.stringify(user, null, 2), (err) => {
-        if(err) console.log(err.message);
+        if (err) console.log(err.message);
     })
+    createFilesArray();
 }
 
-function getFiles(){
+function createFilesArray() {
+    let files = getFiles();
+    let newArray = {
+        files: []
+    }
+    newArray.files.push('CV - Luís Câmara.pdf');
+    files.push(newArray);
+    updateFile(files)
+}
+
+function getFiles() {
     let files = JSON.parse(fs.readFileSync('users_data/files.json'));
     return files;
 }
 
-function getUsers(){
+function getUsers() {
     let users = JSON.parse(fs.readFileSync('users_data/users.json'));
     return users;
 }
 
-function auth(user){
+function checkUsername(username) {
     let users = getUsers();
-    for(let i = 0; i < users.length; i++){
-        if(users[i].username === user.username && users[i].password === user.password){
+    for (let i = 0; i < users.length; i++) {
+        if (users[i].username === username) {
+            return true;
+        }
+    }
+    return false;
+}
+
+function auth(user) {
+    let users = getUsers();
+    for (let i = 0; i < users.length; i++) {
+        if (users[i].username === user.username && users[i].password === user.password) {
             return users[i].id;
         }
     }
@@ -96,7 +117,7 @@ app.get('/file/:id', (req, res) => {
         }
     }
     res.sendFile(file, options, (err) => {
-        if(err){
+        if (err) {
             console.log(err.message);
         } else {
             console.log('File sent!');
@@ -120,9 +141,9 @@ app.delete('/delete/:id', (req, res) => {
         console.log(err);
     }
 
-    if(id === 0){
+    if (id === 0) {
         files.shift();
-    }else{
+    } else {
         files.splice(id, 1);
     }
 
@@ -138,6 +159,12 @@ app.post('/test/:userID', (req, res) => {
 })
 
 app.post('/register', (req, res) => {
+
+    if (checkUsername(req.body.username)) {
+        res.send("Username already exists!");
+        return;
+    }
+
     let users = getUsers();
     let id = users.length;
 
@@ -158,10 +185,10 @@ app.post('/login', (req, res) => {
 
     let log = auth(req.body);
 
-    if(log === 'Wrong'){
+    if (log === 'Wrong') {
         res.send('Username or password is wrong');
         return;
     }
-    
+
     res.send(`${log}`);
 })
