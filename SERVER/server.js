@@ -3,6 +3,7 @@ const multer = require('multer');
 const cors = require('cors');
 const path = require('path');
 const fs = require('fs');
+const { nextTick } = require('process');
 
 const PORT = 5000;
 
@@ -50,6 +51,16 @@ function getFiles(){
 function getUsers(){
     let users = JSON.parse(fs.readFileSync('users_data/users.json'));
     return users;
+}
+
+function auth(user){
+    let users = getUsers();
+    for(let i = 0; i < users.length; i++){
+        if(users[i].username === user.username && users[i].password === user.password){
+            return "Correct";
+        }
+    }
+    return "Wrong";
 }
 
 // Sets the port that the server will listen to
@@ -127,7 +138,6 @@ app.post('/test/:userID', (req, res) => {
 })
 
 app.post('/register', (req, res) => {
-
     let users = getUsers();
     let id = users.length;
 
@@ -140,6 +150,11 @@ app.post('/register', (req, res) => {
     users.push(newUser);
 
     addUser(users);
-    
+
     res.send("Account created with success!");
+})
+
+app.post('/login', (req, res) => {
+    console.log(auth(req.body));
+    res.send("WIP");
 })
