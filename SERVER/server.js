@@ -31,15 +31,25 @@ function addFileName(uploadFiles){
 }
 
 function updateFile(data){
-    fs.writeFile('files.json', JSON.stringify(data, null, 2), (err) => {
-        if(err){
-            console.log(err.message);
-        }
+    fs.writeFile('users_data/files.json', JSON.stringify(data, null, 2), (err) => {
+        if(err) console.log(err.message);
+    })
+}
+
+function addUser(user){
+    fs.writeFile('users_data/users.json', JSON.stringify(user, null, 2), (err) => {
+        if(err) console.log(err.message);
     })
 }
 
 function getFiles(){
-    return JSON.parse(fs.readFileSync('files.json'));
+    let files = JSON.parse(fs.readFileSync('users_data/files.json'));
+    return files;
+}
+
+function getUsers(){
+    let users = JSON.parse(fs.readFileSync('users_data/users.json'));
+    return users;
 }
 
 // Sets the port that the server will listen to
@@ -50,6 +60,8 @@ app.listen(PORT, () => {
 app.use(express.static(__dirname + '/WEB-PAGE'));
 // Allows Cross-origin resource sharing (cors)
 app.use(cors());
+
+app.use(express.json());
 
 
 app.get('/', (req, res) => {
@@ -106,4 +118,28 @@ app.delete('/delete/:id', (req, res) => {
     updateFile(files);
 
     res.send("Deleted File");
+})
+
+app.post('/test/:userID', (req, res) => {
+    let xd = JSON.parse(fs.readFileSync('users_data/users.json'));
+    console.log(xd.length);
+    res.send(xd);
+})
+
+app.post('/register', (req, res) => {
+
+    let users = getUsers();
+    let id = users.length;
+
+    let newUser = {
+        username: req.body.username,
+        password: req.body.password,
+        id: id
+    }
+
+    users.push(newUser);
+
+    addUser(users);
+    
+    res.send("Account created with success!");
 })
