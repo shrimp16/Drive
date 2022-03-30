@@ -9,6 +9,23 @@ let progress = document.getElementById('progress');
 let optionsCard = document.getElementById('options-card');
 let drag = document.getElementById("drag");
 
+let loginBody = document.getElementById('login-body');
+let registerBody = document.getElementById('register-body');
+let goToLoging = document.getElementById('go-to-login');
+let goToRegister = document.getElementById('go-to-register');
+
+goToRegister.addEventListener('click', (e) => {
+    e.preventDefault();
+    registerBody.style.display = 'flex';
+    loginBody.style.display = 'none';
+})
+
+goToLoging.addEventListener('click', (e) => {
+    e.preventDefault();
+    registerBody.style.display = "none";
+    loginBody.style.display = "flex";
+})
+
 let images = [];
 
 function cleanBody() {

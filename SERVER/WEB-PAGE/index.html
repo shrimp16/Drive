@@ -32,7 +32,7 @@
     <div class="header">
         <h1>My Drive</h1>
 
-        <div class="user-config" id="login">
+        <div class="user-config" id="login-body">
             <h2>Login</h2>
             <label for="user">E-mail or Username</label>
             <p><i class="fa-solid fa-user"></i> <input type="text" name="user"></p>
@@ -40,12 +40,12 @@
             <label for="password">Password</label>
             <p><i class="fa-solid fa-key"></i> <input type="password" name="password"></p>
 
-            <a href="">Create Account</a>
+            <a href id="go-to-register">Create Account</a>
             <a href="">Forgot Password?</a>
             <button class="buttons">Login</button>
         </div>
 
-        <div class="user-config" id="register">
+        <div class="user-config" id="register-body">
 
             <h3>Register</h3>
 
@@ -67,11 +67,11 @@
             </select>
             <input class="question" type="text">
 
-            <a href="">Login</a>
+            <a href="" id="go-to-login"2>Login</a>
             <button class="buttons">Register</button>
         </div>
 
-        <div class="options">
+        <div class="options" id="options">
             <button class="buttons" id="upload">Upload Files</button>
             <button class="buttons" id="files">My Files</button>
         </div>
