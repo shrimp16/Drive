@@ -23,10 +23,11 @@ const fileStorageEngine = multer.diskStorage({
 
 const upload = multer({ storage: fileStorageEngine });
 
-function addFileName(uploadFiles) {
+function addFileName(uploadFiles, user) {
     let fileList = getFiles();
+    console.log(fileList[user]);
     for (let i = 0; i < uploadFiles.length; i++) {
-        fileList.push({ 'file': uploadFiles[i].filename })
+        fileList[user].files.push(uploadFiles[i].filename);
     }
     updateFile(fileList);
 }
@@ -49,7 +50,7 @@ function createFilesArray() {
     let newArray = {
         files: []
     }
-    newArray.files.push('CV - Luís Câmara.pdf');
+    
     files.push(newArray);
     updateFile(files)
 }
@@ -100,14 +101,14 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/WEB-PAGE/index.html');
 })
 
-app.post('/upload', upload.array('files', 10), (req, res) => {
-    addFileName(req.files);
+app.post('/upload/:user', upload.array('files', 10), (req, res) => {
+    addFileName(req.files, req.params.user);
     res.send('Done!');
 });
 
-app.get('/file/:id', (req, res) => {
+app.get('/file/:user/:id', (req, res) => {
     let files = getFiles();
-    let file = files[req.params.id].file;
+    let file = files[req.params.user].files[req.params.id];
     let options = {
         root: path.join(__dirname, 'storage'),
         dotfiles: 'deny',
