@@ -23,6 +23,10 @@ img {
     cursor: pointer;
 }
 
+a {
+    color: black;
+}
+
 .file {
     display: none;
 }
@@ -46,6 +50,10 @@ img {
         flex-direction: column;
         font-size: 1.25rem;
         align-items: center;
+        border: 3px black solid;
+        border-radius: 25px;
+        padding: 1rem;
+        background-color: var(--main-light-color);
 
         label {
             text-align: center;

@@ -23,6 +23,10 @@ img {
   cursor: pointer;
 }
 
+a {
+  color: black;
+}
+
 .file {
   display: none;
 }
@@ -61,6 +65,10 @@ img {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  border: 3px black solid;
+  border-radius: 25px;
+  padding: 1rem;
+  background-color: var(--main-light-color);
 }
 
 .header .user-config label {
