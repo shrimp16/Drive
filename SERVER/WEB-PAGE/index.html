@@ -31,10 +31,50 @@
     <!---------------------------HEADER-------------------------------->
     <div class="header">
         <h1>My Drive</h1>
+
+        
+
+        <div class="user-config" id="login">
+            <label for="user">E-mail or Username</label>
+            <p><i class="fa-solid fa-user"></i> <input type="text" name="user"></p>
+
+            <label for="password">Password</label>
+            <p><i class="fa-solid fa-key"></i> <input type="password" name="password"></p>
+
+            <a href="">Create Account</a>
+            <a href="">Forgot Password?</a>
+            <button class="buttons">Login</button>
+        </div>
+
+        <div class="user-config" id="register">
+            <label for="username">Username</label>
+            <p><i class="fa-solid fa-user"></i> <input type="text" name="username"></p>
+
+            <label for="email">E-mail</label>
+            <p><i class="fa-solid fa-at"></i></i> <input type="email" name="email"></p>  
+
+            <label for="password">Password</label>
+            <p><i class="fa-solid fa-key"></i> <input type="password" name="password"></p>
+
+            <label for="secret-question">Secret Question</label>
+            <select name="secret-question" id="secret-question">
+                <option value="default">-----------------------------------</option>
+                <option value="mom">What's your mother's name?</option>
+                <option value="pet">What's your first pet's name?</option>
+                <option value="born">Where were you born?</option>
+            </select>
+            <input class="question" type="text">
+
+
+            <a href="">Login</a>
+            <button class="buttons">Register</button>
+        </div>
+
         <div class="options">
             <button class="buttons" id="upload">Upload Files</button>
             <button class="buttons" id="files">My Files</button>
         </div>
+
     </div>
     <!----------------------------------------------------------------->
     

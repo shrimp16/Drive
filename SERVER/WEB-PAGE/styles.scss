@@ -36,6 +36,42 @@ img {
         margin-bottom: 10px;
         font-size: 3rem;
     }
+
+    .options {
+        display: none;
+    }
+
+    .user-config {
+        display: flex;
+        flex-direction: column;
+        font-size: 1.25rem;
+        align-items: center;
+
+        label {
+            text-align: center;
+            margin: 5px 0;
+        }
+        
+        button {
+            margin-top: 5px;
+        }
+
+        a {
+            font-size: 1rem;
+        }
+
+        select {
+            margin-bottom: 10px;
+        }
+
+        .question {
+            width: 100%;
+        }
+    }
+}
+
+#register {
+    display: none;
 }
 
 .buttons {
@@ -45,6 +81,7 @@ img {
     background-color: var(--btn-color);
     color: var(--hover-color);
     transition: var(--transition-time);
+    margin: auto;
 
     &:hover{
         background-color: var(--hover-color);
