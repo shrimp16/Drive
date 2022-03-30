@@ -131,24 +131,25 @@ app.get('/files', (req, res) => {
     res.send(JSON.stringify(files.length));
 })
 
-app.delete('/delete/:id', (req, res) => {
-    let files = getFiles();
+app.delete('/delete/:user/:id', (req, res) => {
+    let filesList = getFiles();
+    let userFiles = filesList[req.params.user].files;
     let id = parseInt(req.params.id);
 
     try {
-        fs.unlinkSync('./storage/' + files[id].file);
+        fs.unlinkSync('./storage/' + userFiles[id]);
         console.log("Deleted File");
     } catch (err) {
         console.log(err);
     }
 
     if (id === 0) {
-        files.shift();
+        filesList[req.params.user].files.shift();
     } else {
-        files.splice(id, 1);
+        filesList[req.params.user].files.splice(id, 1);
     }
 
-    updateFile(files);
+    updateFile(filesList);
 
     res.send("Deleted File");
 })
