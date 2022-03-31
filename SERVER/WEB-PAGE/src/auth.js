@@ -21,6 +21,10 @@ export function login(username, pw) {
     })
 }
 
+export function register(...data){
+    console.log(data);
+}
+
 function success(un){
     card.show(`Welcome ${un}!`);
     document.querySelector('#login-body').style.display = 'none';

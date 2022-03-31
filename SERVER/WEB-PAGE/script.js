@@ -33,6 +33,19 @@ $('#login').click(() => {
     userAuth.login(document.querySelector('#login_un').value, document.querySelector('#login_pw').value);
 })
 
+$('#register').click(() => {
+    let username = document.querySelector("#register_un").value;
+    let email = document.querySelector("#register_email").value;
+    let password = document.querySelector("#register_pw").value;
+    let question = document.querySelector("#register_question").value;
+
+    if(document.querySelector('#secret-question').value === 'default'){
+        card.show('Please select a secret question for account safety!');
+    }
+
+    userAuth.register(username, email, password, question);
+})
+
 function cleanBody() {
     body.innerHTML = "";
     progress.style.display = "none";
