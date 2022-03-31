@@ -23,6 +23,22 @@ export function login(username, pw) {
 
 export function register(...data){
     console.log(data);
+    let newUser = {
+        username: data[0],
+        email: data[1],
+        password: data[2],
+        question: data[3]
+    }
+
+    fetch(`${config.ADDRESS}/register`, {
+        method: 'POST',
+        body: JSON.stringify(newUser),
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8'
+        }
+    }).then(response => response.text()).then((response) => {
+        console.log(response);
+    })
 }
 
 function success(un){
