@@ -173,6 +173,8 @@ app.post('/register', (req, res) => {
     let newUser = {
         username: req.body.username,
         password: req.body.password,
+        email: req.body.email,
+        question: req.body.question,
         id: id
     }
 
