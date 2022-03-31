@@ -78,7 +78,7 @@ function checkUsername(username) {
 function auth(user) {
     let users = getUsers();
     for (let i = 0; i < users.length; i++) {
-        if (users[i].username === user.username && users[i].password === user.password) {
+        if ((users[i].username === user.username || users[i].email === user.username) && users[i].password === user.password) {
             return users[i].id;
         }
     }
