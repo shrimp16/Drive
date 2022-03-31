@@ -1,6 +1,7 @@
 import * as uploadManager from './src/upload.js';
 import * as card from './src/cards.js';
 import * as config from './src/config.js';
+import * as userAuth from './src/auth.js';
 import { setIcon } from './icons/icons.js';
 
 let input = document.getElementById('file');
@@ -14,6 +15,8 @@ let registerBody = document.getElementById('register-body');
 let goToLoging = document.getElementById('go-to-login');
 let goToRegister = document.getElementById('go-to-register');
 
+let images = [];
+
 goToRegister.addEventListener('click', (e) => {
     e.preventDefault();
     registerBody.style.display = 'flex';
@@ -26,7 +29,9 @@ goToLoging.addEventListener('click', (e) => {
     loginBody.style.display = "flex";
 })
 
-let images = [];
+$('#login').click(() => {
+    userAuth.login(document.querySelector('#login_un').value, document.querySelector('#login_pw').value);
+})
 
 function cleanBody() {
     body.innerHTML = "";

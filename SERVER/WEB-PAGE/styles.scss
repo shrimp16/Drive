@@ -59,7 +59,7 @@ a {
             text-align: center;
             margin: 5px 0;
         }
-        
+
         button {
             margin-top: 5px;
         }
@@ -91,7 +91,7 @@ a {
     transition: var(--transition-time);
     margin: auto;
 
-    &:hover{
+    &:hover {
         background-color: var(--hover-color);
         color: var(--btn-color);
         cursor: pointer;
@@ -173,7 +173,7 @@ a {
 
 .drag-hover {
     border: 3px var(--hover-color) dashed;
-    
+
     i {
         color: var(--hover-color);
     }
@@ -226,7 +226,7 @@ a {
     }
 }
 
-@media (max-width: 35rem){
+@media (max-width: 35rem) {
     .options {
         display: flex;
         flex-direction: column;
@@ -254,7 +254,7 @@ a {
     }
 }
 
-@media (max-width: 80rem){
+@media (max-width: 80rem) {
     .card {
         display: flex;
         flex-direction: column;
