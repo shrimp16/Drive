@@ -38,6 +38,11 @@ export function register(...data){
         }
     }).then(response => response.text()).then((response) => {
         console.log(response);
+        if(response === 'Account created with success!'){
+            success(newUser.username);
+        }else{
+            unsucess(response);
+        }
     })
 }
 
