@@ -49,8 +49,9 @@ export function uploadFiles(data) {
 
 function sendToServer(files){
 
+    console.log(config.currentUser);
     let xhr = new XMLHttpRequest();
-    xhr.open('POST', `${config.ADDRESS}/upload`);
+    xhr.open('POST', `${config.ADDRESS}/upload/${config.currentUser}`);
 
     xhr.upload.addEventListener('progress', ({loaded, total}) => {
         let load = Math.floor((loaded / total) * 100);

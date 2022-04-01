@@ -16,7 +16,7 @@ export function login(username, pw) {
         if(isNaN(id)){
             unsucess(response);
         }else{
-            success(username);
+            success(username, id);
         }
     })
 }
@@ -39,18 +39,19 @@ export function register(...data){
     }).then(response => response.text()).then((response) => {
         console.log(response);
         if(response === 'Account created with success!'){
-            success(newUser.username);
+            login(newUser.username, newUser.password);
         }else{
             unsucess(response);
         }
     })
 }
 
-function success(un){
+function success(un, id){
     card.show(`Welcome ${un}!`);
     document.querySelector('#login-body').style.display = 'none';
     document.querySelector('#register-body').style.display = 'none';
     document.querySelector('#options').style.display = 'block';
+    config.setCurrentUser(id);
 }
 
 function unsucess(text){
