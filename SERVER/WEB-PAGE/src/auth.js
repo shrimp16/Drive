@@ -23,6 +23,7 @@ export function login(username, pw) {
 
 export function register(...data){
     console.log(data);
+    
     let newUser = {
         username: data[0],
         email: data[1],

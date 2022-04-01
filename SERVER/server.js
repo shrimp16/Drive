@@ -3,7 +3,6 @@ const multer = require('multer');
 const cors = require('cors');
 const path = require('path');
 const fs = require('fs');
-const { nextTick } = require('process');
 
 const PORT = 5000;
 
@@ -17,7 +16,7 @@ const fileStorageEngine = multer.diskStorage({
     },
     // The name of the file, sets the type of file correctly
     filename: (req, file, cb) => {
-        cb(null, file.originalname);
+        cb(null, `${Date.now()}-${file.originalname}`);
     }
 })
 
