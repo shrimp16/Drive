@@ -126,9 +126,9 @@ app.get('/file/:user/:id', (req, res) => {
     })
 })
 
-app.get('/files', (req, res) => {
+app.get('/files/:id', (req, res) => {
     let files = getFiles();
-    res.send(JSON.stringify(files.length));
+    res.send(JSON.stringify(files[req.params.id].files.length));
 })
 
 app.delete('/delete/:user/:id', (req, res) => {

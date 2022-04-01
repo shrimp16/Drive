@@ -69,7 +69,7 @@ function createNewImage(image) {
 
 async function getFiles(number) {
     for (let i = 0; i < number; i++) {
-        await fetch(`${config.ADDRESS}/file/${i}`)
+        await fetch(`${config.ADDRESS}/file/${config.currentUser}/${i}`)
             .then(response => response.blob())
             .then((imageBlob) => {
                 createNewImage(imageBlob);
@@ -93,7 +93,7 @@ $('#upload').click(() => {
 
 $('#files').click(() => {
     cleanBody();
-    fetch(`${config.ADDRESS}/files`)
+    fetch(`${config.ADDRESS}/files/${config.currentUser}`)
         .then((response) => response.json())
         .then((response) => getFiles(response));
 })
