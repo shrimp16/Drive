@@ -31,6 +31,9 @@ goToLoging.addEventListener('click', (e) => {
 
 $('#login').click(() => {
     userAuth.login(document.querySelector('#login_un').value, document.querySelector('#login_pw').value);
+
+    document.querySelector('#login_un').value = '';
+    document.querySelector('#login_pw').value = '';
 })
 
 $('#register').click(() => {
@@ -38,6 +41,11 @@ $('#register').click(() => {
     let email = document.querySelector("#register_email").value;
     let password = document.querySelector("#register_pw").value;
     let question = document.querySelector("#register_question").value;
+
+    document.querySelector('#register_un').value = '';
+    document.querySelector('#register_email').value = '';
+    document.querySelector('#register_pw').value = '';
+    document.querySelector('#register_question').value = '';
 
     if(document.querySelector('#secret-question').value === 'default'){
         card.show('Please select a secret question for account safety!');
@@ -96,4 +104,12 @@ $('#files').click(() => {
     fetch(`${config.ADDRESS}/files/${config.currentUser}`)
         .then((response) => response.json())
         .then((response) => getFiles(response));
+})
+
+$('#logout').click(() => {
+    config.setCurrentUser('');
+    
+    document.querySelector('#options').style.display = 'none';
+
+    goToLoging.click();
 })
