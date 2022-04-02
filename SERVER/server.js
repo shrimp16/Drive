@@ -64,10 +64,10 @@ function getUsers() {
     return users;
 }
 
-function checkUsername(username) {
+function checkUsername(username, email) {
     let users = getUsers();
     for (let i = 0; i < users.length; i++) {
-        if (users[i].username === username) {
+        if (users[i].username === username || users[i].email === email) {
             return true;
         }
     }
@@ -161,8 +161,8 @@ app.post('/test/:userID', (req, res) => {
 
 app.post('/register', (req, res) => {
 
-    if (checkUsername(req.body.username)) {
-        res.send("Username already exists!");
+    if (checkUsername(req.body.username, req.body.email)) {
+        res.send("Username or E-mail already exists!");
         return;
     }
 

@@ -5,19 +5,5 @@
     "password": "password",
     "question": "answer",
     "id": 0
-  },
-  {
-    "username": "user1",
-    "password": "password",
-    "email": "user@users.com",
-    "question": "answer",
-    "id": 1
-  },
-  {
-    "username": "shrimp",
-    "password": "shrimppw",
-    "email": "shrimp@users.com",
-    "question": "pet",
-    "id": 2
   }
 ]
