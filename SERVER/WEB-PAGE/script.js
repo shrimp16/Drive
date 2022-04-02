@@ -12,8 +12,10 @@ let drag = document.getElementById("drag");
 
 let loginBody = document.getElementById('login-body');
 let registerBody = document.getElementById('register-body');
+let forgotPasswordBody = document.getElementById('forgot-password-body');
 let goToLoging = document.getElementById('go-to-login');
 let goToRegister = document.getElementById('go-to-register');
+let forgotPassword = document.getElementById('forgot-password')
 
 let images = [];
 
@@ -21,12 +23,21 @@ goToRegister.addEventListener('click', (e) => {
     e.preventDefault();
     registerBody.style.display = 'flex';
     loginBody.style.display = 'none';
+    forgotPasswordBody.style.display = 'none';
 })
 
 goToLoging.addEventListener('click', (e) => {
     e.preventDefault();
     registerBody.style.display = "none";
     loginBody.style.display = "flex";
+    forgotPasswordBody.style.display = 'none';
+})
+
+forgotPassword.addEventListener('click', (e) => {
+    e.preventDefault();
+    registerBody.style.display = 'none';
+    loginBody.style.display = 'none';
+    forgotPasswordBody.style.display = 'block';
 })
 
 $('#login').click(() => {
