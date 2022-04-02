@@ -37,7 +37,7 @@ forgotPassword.addEventListener('click', (e) => {
     e.preventDefault();
     registerBody.style.display = 'none';
     loginBody.style.display = 'none';
-    forgotPasswordBody.style.display = 'block';
+    forgotPasswordBody.style.display = 'flex';
 })
 
 $('#login').click(() => {
@@ -119,8 +119,8 @@ $('#files').click(() => {
 
 $('#logout').click(() => {
     config.setCurrentUser('');
-    
+    cleanBody();
     document.querySelector('#options').style.display = 'none';
-
+    card.show('See you next time!');
     goToLoging.click();
 })

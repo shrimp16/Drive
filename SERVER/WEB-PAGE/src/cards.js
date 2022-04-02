@@ -18,6 +18,10 @@ export function setFilesURL(data){
 export function show(text){
     infoCardText.innerText = text;
     infoCard.style.display = "block";
+
+    setTimeout(() => {
+        infoCard.style.display = "none";
+    }, 2500);
 }
 
 export function setupOptionsCard() {
