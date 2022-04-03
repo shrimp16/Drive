@@ -153,12 +153,6 @@ app.delete('/delete/:user/:id', (req, res) => {
     res.send("Deleted File");
 })
 
-app.post('/test/:userID', (req, res) => {
-    let xd = JSON.parse(fs.readFileSync('users_data/users.json'));
-    console.log(xd.length);
-    res.send(xd);
-})
-
 app.post('/register', (req, res) => {
 
     if (checkUsername(req.body.username, req.body.email)) {
