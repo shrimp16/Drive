@@ -189,3 +189,7 @@ app.post('/login', (req, res) => {
 
     res.send(`${log}`);
 })
+
+app.post('/forgot', (req, res) => {
+    res.send("WIP");
+})
