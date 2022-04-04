@@ -44,7 +44,6 @@ function addUser(user) {
     fs.writeFile('users_data/users.json', JSON.stringify(user, null, 2), (err) => {
         if (err) console.log(err.message);
     })
-    createFilesArray();
 }
 
 function createFilesArray() {
@@ -93,6 +92,18 @@ function generateNewPassword(){
         newPassword += DIGITS.charAt(Math.floor(Math.random() * DIGITS.length));
     }
     console.log(`New password: ${newPassword}`)
+    return newPassword;
+}
+
+function changePassword(email, password){
+    let users = getUsers();
+    for(let i = 0; i < users.length; i++){
+        if(users[i].email === email){
+            users[i].password = password;
+        }
+    }
+
+    addUser(users);
 }
 
 // Sets the port that the server will listen to
@@ -186,6 +197,8 @@ app.post('/register', (req, res) => {
 
     addUser(users);
 
+    createFilesArray();
+
     res.send("Account created with success!");
 })
 
@@ -203,7 +216,7 @@ app.post('/login', (req, res) => {
 
 app.post('/forgot', (req, res) => {
     if(checkUsername(null, req.body.email)){
-        generateNewPassword();   
+        changePassword(req.body.email, generateNewPassword());
     }else{
         res.send("Invalid Email");
         return;
