@@ -65,6 +65,10 @@ $('#register').click(() => {
     userAuth.register(username, email, password, question);
 })
 
+$('#recover').click(() => {
+
+})
+
 function cleanBody() {
     body.innerHTML = "";
     progress.style.display = "none";

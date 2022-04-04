@@ -3,8 +3,11 @@ const multer = require('multer');
 const cors = require('cors');
 const path = require('path');
 const fs = require('fs');
+const { stringify } = require('querystring');
 
 const PORT = 5000;
+
+const DIGITS = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
 
 const app = express();
 
@@ -82,6 +85,14 @@ function auth(user) {
         }
     }
     return "Wrong";
+}
+
+function generateNewPassword(){
+    let newPassword = "";
+    for(let i = 0; i < 16; i++){
+        newPassword += DIGITS.charAt(Math.floor(Math.random() * DIGITS.length));
+    }
+    console.log(`New password: ${newPassword}`)
 }
 
 // Sets the port that the server will listen to
@@ -191,5 +202,11 @@ app.post('/login', (req, res) => {
 })
 
 app.post('/forgot', (req, res) => {
+    if(checkUsername(null, req.body.email)){
+        generateNewPassword();   
+    }else{
+        res.send("Invalid Email");
+        return;
+    }
     res.send("WIP");
 })
