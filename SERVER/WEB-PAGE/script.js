@@ -70,6 +70,21 @@ $('#recover').click(() => {
     let question = document.querySelector("#forgot-question").value;
     console.log(email);
     console.log(question);
+    fetch(`${config.ADDRESS}/forgot`, {
+        method: 'POST',
+        body: JSON.stringify({
+            email: email,
+            question: question
+        }),
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8'
+        }
+    }).then(response => response.text()).then((response) => {
+        card.show(response);
+        setTimeout(() => {
+            goToLoging.click();
+        })
+    })
 })
 
 function cleanBody() {

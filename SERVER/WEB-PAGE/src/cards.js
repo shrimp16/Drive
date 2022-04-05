@@ -21,7 +21,7 @@ export function show(text){
 
     setTimeout(() => {
         infoCard.style.display = "none";
-    }, 2500);
+    }, 3000);
 }
 
 export function setupOptionsCard() {

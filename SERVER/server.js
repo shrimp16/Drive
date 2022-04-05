@@ -220,7 +220,7 @@ app.post('/login', (req, res) => {
 
 app.post('/forgot', (req, res) => {
     if(checkUsername(null, req.body.email)){
-        res.send(changePassword(req.body.email, req.body.question, generateNewPassword()));
+        res.send('Your new password is: ' + changePassword(req.body.email, req.body.question, generateNewPassword()));
     }else{
         res.send("Invalid Email");
         return;
