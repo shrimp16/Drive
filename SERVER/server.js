@@ -95,15 +95,19 @@ function generateNewPassword(){
     return newPassword;
 }
 
-function changePassword(email, password){
+function changePassword(email, question, password){
     let users = getUsers();
     for(let i = 0; i < users.length; i++){
-        if(users[i].email === email){
+        if(users[i].email === email && users[i].question !== question){
+            return "Invalid answer";
+        }
+        if(users[i].email === email && users[i].question === question){
             users[i].password = password;
+            addUser(users);
         }
     }
 
-    addUser(users);
+    return password;
 }
 
 // Sets the port that the server will listen to
@@ -216,10 +220,9 @@ app.post('/login', (req, res) => {
 
 app.post('/forgot', (req, res) => {
     if(checkUsername(null, req.body.email)){
-        changePassword(req.body.email, generateNewPassword());
+        res.send(changePassword(req.body.email, req.body.question, generateNewPassword()));
     }else{
         res.send("Invalid Email");
         return;
     }
-    res.send("WIP");
 })
