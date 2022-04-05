@@ -66,7 +66,10 @@ $('#register').click(() => {
 })
 
 $('#recover').click(() => {
-
+    let email = document.querySelector("#forgot-email").value;
+    let question = document.querySelector("#forgot-question").value;
+    console.log(email);
+    console.log(question);
 })
 
 function cleanBody() {
