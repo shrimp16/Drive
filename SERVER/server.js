@@ -112,8 +112,14 @@ function changePassword(email, question, password) {
 function increaseUsedStorage(files, user){
     let users = getUsers();
     for(let i = 0; i < files.length; i++){
-        users[user].increaseUsedStorage += bytesToGigabytes(files[i].size);
+        users[user].usedStorage += bytesToGigabytes(files[i].size);
     }
+    addUser(users);
+}
+
+function removeUsedStorage(size, user){
+    let users = getUsers();
+    users[user].usedStorage -= bytesToGigabytes(size);
     addUser(users);
 }
 
@@ -172,6 +178,10 @@ app.delete('/delete/:user/:id', (req, res) => {
     let filesList = getFiles();
     let userFiles = filesList[req.params.user].files;
     let id = parseInt(req.params.id);
+
+    let file = fs.statSync('./storage/' + userFiles[id]);
+    console.log(file.size);
+    removeUsedStorage(file.size, req.params.user);
 
     try {
         fs.unlinkSync('./storage/' + userFiles[id]);
