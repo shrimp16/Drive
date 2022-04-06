@@ -52,7 +52,7 @@ function remove(x) {
     }
 
     close();
-    fetch(`${config.ADDRESS}/delete/${x.currentTarget.myParam}`, {
+    fetch(`${config.ADDRESS}/delete/${config.currentUser}/${x.currentTarget.myParam}`, {
         method: 'DELETE',
     }).then(response => response.text())
     .then((response) => {
