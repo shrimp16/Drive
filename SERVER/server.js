@@ -3,7 +3,6 @@ const multer = require('multer');
 const cors = require('cors');
 const path = require('path');
 const fs = require('fs');
-const { stringify } = require('querystring');
 
 const PORT = 5000;
 
@@ -51,9 +50,9 @@ function createFilesArray() {
     let newArray = {
         files: []
     }
-    
+
     files.push(newArray);
-    updateFile(files)
+    updateFile(files);
 }
 
 function getFiles() {
@@ -86,28 +85,40 @@ function auth(user) {
     return "Wrong";
 }
 
-function generateNewPassword(){
+function generateNewPassword() {
     let newPassword = "";
-    for(let i = 0; i < 16; i++){
+    for (let i = 0; i < 16; i++) {
         newPassword += DIGITS.charAt(Math.floor(Math.random() * DIGITS.length));
     }
     console.log(`New password: ${newPassword}`)
     return newPassword;
 }
 
-function changePassword(email, question, password){
+function changePassword(email, question, password) {
     let users = getUsers();
-    for(let i = 0; i < users.length; i++){
-        if(users[i].email === email && users[i].question !== question){
+    for (let i = 0; i < users.length; i++) {
+        if (users[i].email === email && users[i].question !== question) {
             return "Invalid answer";
         }
-        if(users[i].email === email && users[i].question === question){
+        if (users[i].email === email && users[i].question === question) {
             users[i].password = password;
             addUser(users);
         }
     }
 
     return password;
+}
+
+function increaseUsedStorage(files, user){
+    let users = getUsers();
+    for(let i = 0; i < files.length; i++){
+        users[user].increaseUsedStorage += bytesToGigabytes(files[i].size);
+    }
+    addUser(users);
+}
+
+function bytesToGigabytes(bytes) {
+    return (((bytes / 1024) / 1024) / 1024);
 }
 
 // Sets the port that the server will listen to
@@ -128,6 +139,7 @@ app.get('/', (req, res) => {
 
 app.post('/upload/:user', upload.array('files', 10), (req, res) => {
     addFileName(req.files, req.params.user);
+    increaseUsedStorage(req.files, req.params.user);
     res.send('Done!');
 });
 
@@ -194,6 +206,8 @@ app.post('/register', (req, res) => {
         password: req.body.password,
         email: req.body.email,
         question: req.body.question,
+        storage: 5,
+        usedStorage: 0,
         id: id
     }
 
@@ -219,9 +233,9 @@ app.post('/login', (req, res) => {
 })
 
 app.post('/forgot', (req, res) => {
-    if(checkUsername(null, req.body.email)){
+    if (checkUsername(null, req.body.email)) {
         res.send('Your new password is: ' + changePassword(req.body.email, req.body.question, generateNewPassword()));
-    }else{
+    } else {
         res.send("Invalid Email");
         return;
     }
