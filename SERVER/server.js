@@ -250,3 +250,8 @@ app.post('/forgot', (req, res) => {
         return;
     }
 })
+
+app.get('/left-space/:user', (req, res) => {
+    let users = getUsers();
+    res.send(`${users[req.params.user].storage - users[req.params.user].usedStorage}`);
+})
