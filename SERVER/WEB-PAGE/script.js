@@ -3,6 +3,7 @@ import * as card from './src/cards.js';
 import * as config from './src/config.js';
 import * as userAuth from './src/auth.js';
 import { setIcon } from './icons/icons.js';
+import * as storage from './src/storage.js';
 
 let input = document.getElementById('file');
 let body = document.getElementById('body');
@@ -118,6 +119,7 @@ async function getFiles(number) {
     }
     card.setupOptionsCard();
     card.setFilesURL(images);
+    storage.updateStorageInfo(config.currentUser);
 }
 
 input.addEventListener('change', () => {

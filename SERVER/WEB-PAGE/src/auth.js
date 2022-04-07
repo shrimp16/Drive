@@ -1,5 +1,6 @@
 import * as card from './cards.js'
 import * as config from './config.js';
+import * as storage from './storage.js';
 
 export function login(username, pw) {
     fetch(`${config.ADDRESS}/login`, {
@@ -53,22 +54,9 @@ function success(un, id) {
     document.querySelector('#register-body').style.display = 'none';
     document.querySelector('#options').style.display = 'block';
     config.setCurrentUser(id);
-    updateStorageInfo(id);
+    storage.updateStorageInfo(id);
 }
 
 function unsucess(text) {
     card.show(text);
-}
-
-function updateStorageInfo(id) {
-    let storageBar = document.getElementById('storage-bar');
-    let storageInfo = document.getElementById('storage-info');
-
-    fetch(`${config.ADDRESS}/space/${id}`)
-    .then(response => response.json())
-    .then((response) => {
-        console.log(response);
-        storageBar.style.width = `${Math.floor((response.usedStorage / response.storage) * 100)}%`;
-        storageInfo.innerText = `${(response.usedStorage).toFixed(2)} GB / ${(response.storage).toFixed(2)} GB`;
-    })
 }

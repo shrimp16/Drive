@@ -1,5 +1,6 @@
 import * as card from './cards.js';
 import * as config from './config.js';
+import * as storage from './storage.js';
 
 let progressBar = document.getElementById('progress-bar');
 let progressText = document.getElementById('progress-text');
@@ -63,5 +64,6 @@ function sendToServer(files){
         }
     })
     xhr.send(files);
+    storage.updateStorageInfo(config.currentUser);
 
 }
