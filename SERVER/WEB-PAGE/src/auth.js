@@ -68,6 +68,7 @@ function updateStorageInfo(id) {
     .then(response => response.json())
     .then((response) => {
         console.log(response);
-        storageBar.style.width = `${Math.floor((response.usedStorage / response.storage) * 100)}%`
+        storageBar.style.width = `${Math.floor((response.usedStorage / response.storage) * 100)}%`;
+        storageInfo.innerText = `${(response.usedStorage).toFixed(2)} GB / ${(response.storage).toFixed(2)} GB`;
     })
 }
