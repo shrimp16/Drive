@@ -15,7 +15,7 @@ let registerBody = document.getElementById('register-body');
 let forgotPasswordBody = document.getElementById('forgot-password-body');
 let goToLoging = document.getElementById('go-to-login');
 let goToRegister = document.getElementById('go-to-register');
-let forgotPassword = document.getElementById('forgot-password')
+let forgotPassword = document.getElementById('forgot-password');
 
 let images = [];
 

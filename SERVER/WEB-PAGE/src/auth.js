@@ -13,17 +13,17 @@ export function login(username, pw) {
         }
     }).then(response => response.text()).then((response) => {
         let id = parseInt(response);
-        if(isNaN(id)){
+        if (isNaN(id)) {
             unsucess(response);
-        }else{
+        } else {
             success(username, id);
         }
     })
 }
 
-export function register(...data){
+export function register(...data) {
     console.log(data);
-    
+
     let newUser = {
         username: data[0],
         email: data[1],
@@ -39,22 +39,35 @@ export function register(...data){
         }
     }).then(response => response.text()).then((response) => {
         console.log(response);
-        if(response === 'Account created with success!'){
+        if (response === 'Account created with success!') {
             login(newUser.username, newUser.password);
-        }else{
+        } else {
             unsucess(response);
         }
     })
 }
 
-function success(un, id){
+function success(un, id) {
     card.show(`Welcome ${un}!`);
     document.querySelector('#login-body').style.display = 'none';
     document.querySelector('#register-body').style.display = 'none';
     document.querySelector('#options').style.display = 'block';
     config.setCurrentUser(id);
+    updateStorageInfo(id);
 }
 
-function unsucess(text){
+function unsucess(text) {
     card.show(text);
+}
+
+function updateStorageInfo(id) {
+    let storageBar = document.getElementById('storage-bar');
+    let storageInfo = document.getElementById('storage-info');
+
+    fetch(`${config.ADDRESS}/space/${id}`)
+    .then(response => response.json())
+    .then((response) => {
+        console.log(response);
+        storageBar.style.width = `${Math.floor((response.usedStorage / response.storage) * 100)}%`
+    })
 }
