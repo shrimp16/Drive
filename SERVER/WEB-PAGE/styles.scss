@@ -226,6 +226,29 @@ a {
     }
 }
 
+.storage-container {
+    width: 100%;
+    height: 1.5rem;
+    margin-top: 1rem;
+    border: 2px black solid;
+    border-radius: 5px;
+    
+    p {
+        width: 100%;
+        margin-top: 0.25rem;
+        text-align: center;
+        font-size: 1.3rem;
+    }
+}
+
+.storage-bar{
+    width: 0%;
+    height: 100%;
+    background-color: var(--main-light-color);
+    border-radius: 5px;
+
+}
+
 @media (max-width: 35rem) {
     .options {
         display: flex;
