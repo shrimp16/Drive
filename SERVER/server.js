@@ -259,3 +259,9 @@ app.get('/space/:user', (req, res) => {
     }
     res.send(data);
 })
+
+app.get('/test', (req, res) => {
+    let files = getFiles();
+    console.log(files[0].files[5]);
+    res.download(__dirname + '/storage/' + files[0].files[5]);
+})
