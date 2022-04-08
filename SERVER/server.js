@@ -109,15 +109,15 @@ function changePassword(email, question, password) {
     return password;
 }
 
-function increaseUsedStorage(files, user){
+function increaseUsedStorage(files, user) {
     let users = getUsers();
-    for(let i = 0; i < files.length; i++){
+    for (let i = 0; i < files.length; i++) {
         users[user].usedStorage += bytesToGigabytes(files[i].size);
     }
     addUser(users);
 }
 
-function removeUsedStorage(size, user){
+function removeUsedStorage(size, user) {
     let users = getUsers();
     users[user].usedStorage -= bytesToGigabytes(size);
     addUser(users);
@@ -160,13 +160,18 @@ app.get('/file/:user/:id', (req, res) => {
             'x-sent': true
         }
     }
-    res.sendFile(file, options, (err) => {
-        if (err) {
-            console.log(err.message);
-        } else {
-            console.log('File sent!');
-        }
-    })
+
+    if (file.includes('.rar', file.length - 4)) {
+        res.send('rar file');
+    } else {
+        res.sendFile(file, options, (err) => {
+            if (err) {
+                console.log(err.message);
+            } else {
+                console.log('File sent!');
+            }
+        })
+    }
 })
 
 app.get('/files/:id', (req, res) => {
@@ -254,8 +259,8 @@ app.post('/forgot', (req, res) => {
 app.get('/space/:user', (req, res) => {
     let users = getUsers();
     let data = {
-        storage : users[req.params.user].storage,
-        usedStorage : users[req.params.user].usedStorage
+        storage: users[req.params.user].storage,
+        usedStorage: users[req.params.user].usedStorage
     }
     res.send(data);
 })
@@ -263,5 +268,5 @@ app.get('/space/:user', (req, res) => {
 app.get('/test', (req, res) => {
     let files = getFiles();
     console.log(files[0].files[5]);
-    res.download(__dirname + '/storage/' + files[0].files[5]);
+    res.download(__dirname + '/storage/' + files[0].files[0]);
 })
