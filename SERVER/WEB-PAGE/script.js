@@ -59,7 +59,7 @@ $('#register').click(() => {
     document.querySelector('#register_pw').value = '';
     document.querySelector('#register_question').value = '';
 
-    if(document.querySelector('#secret-question').value === 'default'){
+    if (document.querySelector('#secret-question').value === 'default') {
         card.show('Please select a secret question for account safety!');
     }
 
@@ -99,11 +99,12 @@ function createNewImage(image) {
     let str = image.type;
     let arr = str.split('/');
 
-    if(arr[0] === 'image'){
+    if (arr[0] === 'image') {
         img.src = URL.createObjectURL(image);
-    }else{
+    } else {
         img.src = setIcon(str);
     }
+    
     console.log(str);
     body.appendChild(img);
     images.push(URL.createObjectURL(image));
@@ -114,7 +115,14 @@ async function getFiles(number) {
         await fetch(`${config.ADDRESS}/file/${config.currentUser}/${i}`)
             .then(response => response.blob())
             .then((imageBlob) => {
-                createNewImage(imageBlob);
+                console.log(imageBlob.text()
+                    .then((response) => {
+                        if(response === 'rar file'){
+                            console.log("this a rar a file");
+                        }else {
+                            createNewImage(imageBlob);
+                        }
+                    }));
             })
     }
     card.setupOptionsCard();
