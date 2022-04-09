@@ -43,7 +43,6 @@ export function setupOptionsCard() {
 }
 
 function remove(x) {
-    console.log(x.currentTarget.myParam);
 
     if(x.currentTarget.myParam === 0){
         filesURL.shift();

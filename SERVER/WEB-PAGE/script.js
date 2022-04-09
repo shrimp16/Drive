@@ -69,8 +69,6 @@ $('#register').click(() => {
 $('#recover').click(() => {
     let email = document.querySelector("#forgot-email").value;
     let question = document.querySelector("#forgot-question").value;
-    console.log(email);
-    console.log(question);
     fetch(`${config.ADDRESS}/forgot`, {
         method: 'POST',
         body: JSON.stringify({
@@ -105,7 +103,6 @@ function createNewImage(image) {
         img.src = setIcon(str);
     }
     
-    console.log(str);
     body.appendChild(img);
     images.push(URL.createObjectURL(image));
 }
@@ -115,14 +112,14 @@ async function getFiles(number) {
         await fetch(`${config.ADDRESS}/file/${config.currentUser}/${i}`)
             .then(response => response.blob())
             .then((imageBlob) => {
-                console.log(imageBlob.text()
+                imageBlob.text()
                     .then((response) => {
                         if(response === 'rar file'){
                             console.log("this a rar a file");
                         }else {
                             createNewImage(imageBlob);
                         }
-                    }));
+                    });
             })
     }
     card.setupOptionsCard();

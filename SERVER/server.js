@@ -26,7 +26,6 @@ const upload = multer({ storage: fileStorageEngine });
 
 function addFileName(uploadFiles, user) {
     let fileList = getFiles();
-    console.log(fileList[user]);
     for (let i = 0; i < uploadFiles.length; i++) {
         fileList[user].files.push(uploadFiles[i].filename);
     }
@@ -90,7 +89,6 @@ function generateNewPassword() {
     for (let i = 0; i < 16; i++) {
         newPassword += DIGITS.charAt(Math.floor(Math.random() * DIGITS.length));
     }
-    console.log(`New password: ${newPassword}`)
     return newPassword;
 }
 
@@ -185,7 +183,6 @@ app.delete('/delete/:user/:id', (req, res) => {
     let id = parseInt(req.params.id);
 
     let file = fs.statSync('./storage/' + userFiles[id]);
-    console.log(file.size);
     removeUsedStorage(file.size, req.params.user);
 
     try {
@@ -267,6 +264,5 @@ app.get('/space/:user', (req, res) => {
 
 app.get('/test', (req, res) => {
     let files = getFiles();
-    console.log(files[0].files[5]);
     res.download(__dirname + '/storage/' + files[0].files[0]);
 })

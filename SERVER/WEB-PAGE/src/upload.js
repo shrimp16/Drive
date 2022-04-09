@@ -50,7 +50,6 @@ export function uploadFiles(data) {
 
 function sendToServer(files){
 
-    console.log(config.currentUser);
     let xhr = new XMLHttpRequest();
     xhr.open('POST', `${config.ADDRESS}/upload/${config.currentUser}`);
 
