@@ -25,11 +25,15 @@ export function show(text){
 }
 
 export function setupOptionsCard() {
-    let images = document.querySelectorAll('img');
+    let images = document.images;
+
+    console.log(document.images);
     for (let i = 0; i < images.length; i++) {
 
+        console.log(i);
         images[i].addEventListener('click', () => {
 
+            console.log('XDDDDDDD');
             optionsCard.style.display = "block";
 
             deleteButton.myParam = i;
@@ -40,6 +44,7 @@ export function setupOptionsCard() {
             closeButton.addEventListener('click', close);
         })
     }
+    console.log(document.querySelectorAll('img'));
 }
 
 function remove(x) {

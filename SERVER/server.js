@@ -159,7 +159,7 @@ app.get('/file/:user/:id', (req, res) => {
         }
     }
 
-    if (file.includes('.rar', file.length - 4)) {
+    if (file.includes('.rar', file.length - 4) || file.includes('.zip', file.length - 4)) {
         res.send('rar file');
     } else {
         res.sendFile(file, options, (err) => {

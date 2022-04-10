@@ -102,24 +102,42 @@ function createNewImage(image) {
     } else {
         img.src = setIcon(str);
     }
-    
+
     body.appendChild(img);
     images.push(URL.createObjectURL(image));
+}
+
+function createFakeImage() {
+    let img = new Image();
+    img.src = './icons/rar.png';
+    body.appendChild(img);
+    images.push('xdxdxd');
+}
+
+async function isRar(file) {
+    let answer = await file.text()
+        .then((response) => {
+            if(response === 'rar file'){
+                return true;
+            }else {
+                return false;
+            }
+        })
+
+    return answer;
 }
 
 async function getFiles(number) {
     for (let i = 0; i < number; i++) {
         await fetch(`${config.ADDRESS}/file/${config.currentUser}/${i}`)
             .then(response => response.blob())
-            .then((imageBlob) => {
-                imageBlob.text()
-                    .then((response) => {
-                        if(response === 'rar file'){
-                            console.log("this a rar a file");
-                        }else {
-                            createNewImage(imageBlob);
-                        }
-                    });
+            .then(async (imageBlob) => {
+                if (await isRar(imageBlob)) {
+                    createFakeImage();
+                } else {
+                    console.log('no rar');
+                    createNewImage(imageBlob);
+                }
             })
     }
     card.setupOptionsCard();
