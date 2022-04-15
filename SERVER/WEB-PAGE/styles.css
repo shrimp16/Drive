@@ -47,6 +47,10 @@ a {
 .header h1 {
   margin-bottom: 10px;
   font-size: 3rem;
+  padding: 0.5rem 10rem;
+  border: 3px black solid;
+  border-radius: 25px;
+  background-color: lightgray;
 }
 
 .header .options {
