@@ -237,7 +237,7 @@ a {
     margin-bottom: 1rem;
     border: 2px black solid;
     border-radius: 5px;
-    
+
     p {
         width: 100%;
         margin-top: 0.25rem;
@@ -246,11 +246,30 @@ a {
     }
 }
 
-.storage-bar{
+.storage-bar {
     width: 0%;
     height: 100%;
     background-color: var(--main-light-color);
     border-radius: 5px;
+
+}
+
+.create-folder {
+    height: 15rem;
+    width: 15rem;
+    border: 3px black dashed;
+
+    h3 {
+        color: gray;
+        text-align: center;
+        margin-top: 50%;
+        transition: 0.5s;
+
+        &:hover {
+            color: black;
+            cursor: pointer;
+        }
+    }
 
 }
 

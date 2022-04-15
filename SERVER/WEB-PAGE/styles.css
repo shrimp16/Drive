@@ -282,6 +282,25 @@ a {
   border-radius: 5px;
 }
 
+.create-folder {
+  height: 15rem;
+  width: 15rem;
+  border: 3px black dashed;
+}
+
+.create-folder h3 {
+  color: gray;
+  text-align: center;
+  margin-top: 50%;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.create-folder h3:hover {
+  color: black;
+  cursor: pointer;
+}
+
 @media (max-width: 35rem) {
   .options {
     display: -webkit-box;
