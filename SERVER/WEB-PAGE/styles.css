@@ -302,6 +302,14 @@ a {
 }
 
 @media (max-width: 35rem) {
+  img {
+    height: 7.5rem;
+    width: 7.5rem;
+  }
+  .create-folder {
+    height: 7.5rem;
+    width: 7.5rem;
+  }
   .options {
     display: -webkit-box;
     display: -ms-flexbox;

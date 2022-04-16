@@ -1,0 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Syne Mono', monospace;
+}
+
+body {
+  background-color: #ff9900;
+}
+
+img {
+  height: 15rem;
+  width: 15rem;
+  cursor: pointer;
+}
+
+a {
+  color: black;
+}
+
+.file {
+  display: none;
+}
+/*# sourceMappingURL=styles.css.map */
