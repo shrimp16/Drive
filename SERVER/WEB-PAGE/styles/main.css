@@ -1,3 +1,27 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Syne Mono", monospace;
+}
+
+body {
+  background-color: rgb(255, 153, 0);
+}
+
+img {
+  height: 15rem;
+  width: 15rem;
+  cursor: pointer;
+}
+
+a {
+  color: black;
+}
+
+.file {
+  display: none;
+}
+
 .header {
   display: flex;
   flex-direction: column;
@@ -28,6 +52,10 @@
   width: 100%;
 }
 
+#register-body {
+  display: none;
+}
+
 .buttons {
   font-size: 1.35rem;
   width: 10rem;
@@ -41,32 +69,4 @@
   background-color: black;
   color: white;
   cursor: pointer;
-}
-
-#register-body {
-  display: none;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  font-family: "Syne Mono", monospace;
-}
-
-body {
-  background-color: rgb(255, 153, 0);
-}
-
-img {
-  height: 15rem;
-  width: 15rem;
-  cursor: pointer;
-}
-
-a {
-  color: black;
-}
-
-.file {
-  display: none;
-}/*# sourceMappingURL=styles.css.map */
+}/*# sourceMappingURL=main.css.map */
