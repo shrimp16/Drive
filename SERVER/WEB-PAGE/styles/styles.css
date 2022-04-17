@@ -1,11 +1,60 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.header .options {
+  display: none;
+}
+.header .user-config {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 3px black solid;
+  padding: 10px;
+  border-radius: 25px;
+  background-color: rgb(255, 183, 0);
+}
+.header .user-config label {
+  margin: 5px 0;
+}
+.header .user-config button {
+  margin-top: 5px;
+}
+.header .user-config select {
+  margin-bottom: 10px;
+}
+.header .user-config .question {
+  width: 100%;
+}
+
+.buttons {
+  font-size: 1.35rem;
+  width: 10rem;
+  margin-left: 10px;
+  background-color: white;
+  color: black;
+  transition: 0.6s;
+  margin: auto;
+}
+.buttons:hover {
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+
+#register-body {
+  display: none;
+}
+
 * {
   margin: 0;
   padding: 0;
-  font-family: 'Syne Mono', monospace;
+  font-family: "Syne Mono", monospace;
 }
 
 body {
-  background-color: #ff9900;
+  background-color: rgb(255, 153, 0);
 }
 
 img {
@@ -20,76 +69,4 @@ a {
 
 .file {
   display: none;
-}
-
-.header {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.header .options {
-  display: none;
-}
-
-.header .user-config {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  border: 3px black solid;
-  padding: 10px;
-  border-radius: 25px;
-  background-color: #ffb700;
-}
-
-.header .user-config label {
-  margin: 5px 0;
-}
-
-.header .user-config button {
-  margin-top: 5px;
-}
-
-.header .user-config select {
-  margin-bottom: 10px;
-}
-
-.header .user-config .question {
-  width: 100%;
-}
-
-.buttons {
-  font-size: 1.35rem;
-  width: 10rem;
-  margin-left: 10px;
-  background-color: white;
-  color: black;
-  -webkit-transition: 0.6s;
-  transition: 0.6s;
-  margin: auto;
-}
-
-.buttons:hover {
-  background-color: black;
-  color: white;
-  cursor: pointer;
-}
-
-#register-body {
-  display: none;
-}
-/*# sourceMappingURL=styles.css.map */
+}/*# sourceMappingURL=styles.css.map */
