@@ -1,0 +1,14 @@
+.alert {
+    width: 70%;
+    margin: auto;
+    margin-top: 1rem;
+    text-align: center;
+    padding: 1rem;
+    border: 3px black solid;
+    border-radius: 25px;
+    background-color: rgb(255, 183, 0);
+
+    span {
+        cursor: pointer;
+    }
+}
