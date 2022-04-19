@@ -111,6 +111,7 @@ a {
 }
 
 .alert {
+  display: none;
   width: 70%;
   margin: auto;
   margin-top: 1rem;
@@ -122,4 +123,16 @@ a {
 }
 .alert span {
   cursor: pointer;
+}
+
+.card-container {
+  width: 70%;
+  margin: auto;
+  padding: 1rem;
+  border: 3px black solid;
+  border-radius: 25px;
+  background-color: rgb(255, 183, 0);
+}
+.card-container .card {
+  display: flex;
 }/*# sourceMappingURL=main.css.map */
