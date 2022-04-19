@@ -1,0 +1,26 @@
+.center {
+    width: 75%;
+    margin: auto;
+}
+
+.create-folder {
+    height: 7.5rem;
+    width: 7.5rem;
+    border: 3px gray solid;
+    border-radius: 25px;
+    background-color: rgb(255, 183, 0);
+    color: gray;
+    margin: auto;
+    cursor: pointer;
+
+    &:hover {
+        border: 3px black solid;
+        color: black;
+    }
+
+    h3 {
+        text-align: center;
+        margin-top: 50%;
+        transform: translateY(-50%);
+    }
+}
