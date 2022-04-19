@@ -4,6 +4,7 @@
 }
 
 .create-folder {
+    display: none;
     height: 7.5rem;
     width: 7.5rem;
     border: 3px gray solid;
@@ -23,4 +24,20 @@
         margin-top: 50%;
         transform: translateY(-50%);
     }
+}
+
+.body {
+
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    margin: auto;
+    margin-top: 1rem;
+
+    img {
+        margin: auto;
+        margin-top: 1rem;
+        border: 1px black solid;
+    }
+
 }
