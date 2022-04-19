@@ -1,13 +1,17 @@
-.alert {
-    display: none;
+@mixin card {
     width: 70%;
     margin: auto;
-    margin-top: 1rem;
-    text-align: center;
     padding: 1rem;
     border: 3px black solid;
     border-radius: 25px;
     background-color: rgb(255, 183, 0);
+}
+
+.alert {
+    @include card();
+    display: none;
+    margin-top: 1rem;
+    text-align: center;
 
     span {
         cursor: pointer;
@@ -15,14 +19,13 @@
 }
 
 .card-container {
-    width: 70%;
-    margin: auto;
-    padding: 1rem;
-    border: 3px black solid;
-    border-radius: 25px;
-    background-color: rgb(255, 183, 0);
+    display: none;
+    position: fixed;
+    width: 100%;
+    margin-top: 17rem;
 
     .card {
         display: flex;
+        @include card();
     }
 }

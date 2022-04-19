@@ -111,28 +111,32 @@ a {
 }
 
 .alert {
-  display: none;
   width: 70%;
   margin: auto;
-  margin-top: 1rem;
-  text-align: center;
   padding: 1rem;
   border: 3px black solid;
   border-radius: 25px;
   background-color: rgb(255, 183, 0);
+  display: none;
+  margin-top: 1rem;
+  text-align: center;
 }
 .alert span {
   cursor: pointer;
 }
 
 .card-container {
+  display: none;
+  position: fixed;
+  width: 100%;
+  margin-top: 17rem;
+}
+.card-container .card {
+  display: flex;
   width: 70%;
   margin: auto;
   padding: 1rem;
   border: 3px black solid;
   border-radius: 25px;
   background-color: rgb(255, 183, 0);
-}
-.card-container .card {
-  display: flex;
 }/*# sourceMappingURL=main.css.map */
