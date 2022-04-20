@@ -1,3 +1,5 @@
+@use '../utilities/' as *;
+
 .file {
     display: none;
 }
@@ -6,11 +8,11 @@
     display: none;
     height: 30rem;
     width: 30rem;
-    background-color: rgb(255, 183, 0);
+    background-color: $light-orange;
     margin: auto;
     margin-top: 1rem;
-    border: 3px gray dashed;
-    color: gray;
+    border: 3px $gray dashed;
+    color: $gray;
     font-size: 1.25rem;
     cursor: pointer;
 
@@ -21,17 +23,17 @@
     }
 
     i {
-        color: gray;
+        color: $gray;
         width: 100%;
         text-align: center;
     }
 }
 
 .drag-hover {
-    border: 3px black dashed;
-    color: black;
+    border: 3px $black dashed;
+    color: $black;
 
     i {
-        color: black;
+        color: $black;
     }
 }

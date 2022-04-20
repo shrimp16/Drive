@@ -1,10 +1,12 @@
+@use '../utilities/' as *;
+
 @mixin card {
     width: 70%;
     margin: auto;
     padding: 1rem;
-    border: 3px black solid;
+    border: 3px $black solid;
     border-radius: 25px;
-    background-color: rgb(255, 183, 0);
+    background-color: $light-orange;
 }
 
 .alert {

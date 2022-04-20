@@ -1,15 +1,17 @@
+@use '../utilities/' as *;
+
 .buttons {
     font-size: 1.35rem;
     width: 10rem;
     margin-left: 10px;
-    background-color: white;
-    color: black;
+    background-color: $white;
+    color: $black;
     transition: 0.6s;
     margin: auto;
 
     &:hover{
-        background-color: black;
-        color: white;
+        background-color: $black;
+        color: $white;
         cursor: pointer;
     }
 }
