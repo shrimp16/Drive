@@ -171,4 +171,28 @@ a {
 }
 .drag-hover i {
   color: black;
+}
+
+.progress {
+  margin-top: 0.5rem;
+}
+.progress p {
+  text-align: center;
+  font-size: 1.1rem;
+  margin-top: 5px;
+}
+
+.bar-container {
+  width: 10rem;
+  height: 0.5rem;
+  border: 2px black solid;
+  border-radius: 10px;
+  margin: auto;
+}
+
+.bar {
+  width: 50%;
+  height: 100%;
+  background-color: white;
+  border-radius: 10px;
 }/*# sourceMappingURL=main.css.map */
