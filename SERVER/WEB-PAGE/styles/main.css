@@ -18,10 +18,6 @@ a {
   color: black;
 }
 
-.file {
-  display: none;
-}
-
 .header {
   display: flex;
   flex-direction: column;
@@ -29,6 +25,7 @@ a {
 }
 .header .options {
   display: none;
+  margin: 0.5rem;
 }
 .header .user-config {
   display: flex;
@@ -139,4 +136,39 @@ a {
   border: 3px black solid;
   border-radius: 25px;
   background-color: rgb(255, 183, 0);
+}
+
+.file {
+  display: none;
+}
+
+.drag {
+  display: none;
+  height: 30rem;
+  width: 30rem;
+  background-color: rgb(255, 183, 0);
+  margin: auto;
+  margin-top: 1rem;
+  border: 3px gray dashed;
+  color: gray;
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+.drag p {
+  text-align: center;
+  margin-top: 50%;
+  transform: translateY(-50%);
+}
+.drag i {
+  color: gray;
+  width: 100%;
+  text-align: center;
+}
+
+.drag-hover {
+  border: 3px black dashed;
+  color: black;
+}
+.drag-hover i {
+  color: black;
 }/*# sourceMappingURL=main.css.map */
