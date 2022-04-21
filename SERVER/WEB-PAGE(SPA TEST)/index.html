@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Drive</title>
+    <link rel="stylesheet" href="./styles/main.css">
+    <link rel="icon" href="favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/1dbb3ca32c.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!--------------------------------------CARDS-------------------------------------------->
+    <div id="alert" class="alert">
+        <a id="alert-text">DEFAULT</a>
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">X</span>
+    </div>
+
+    <div id="options-card" class="card-container">
+        <div class="card">
+            <button id="open" class="buttons">Open</button>
+            <button id="delete" class="buttons">Delete</button>
+            <button id="close" class="buttons">Close</button>
+        </div>
+    </div>
+    <!--------------------------------------------------------------------------------------->
+
+    <!---------------------------HEADER-------------------------------->
+    <div class="header" id="header">
+        <h1>My Drive</h1>
+
+        <div class="user-config" id="login-body">
+            <h2>Login</h2>
+            <label for="user">E-mail or Username</label>
+            <p><i class="fa-solid fa-user"></i> <input type="text" name="user" id="login_un"></p>
+
+            <label for="password">Password</label>
+            <p><i class="fa-solid fa-key"></i> <input type="password" name="password" id="login_pw"></p>
+
+            <a href id="go-to-register">Create Account</a>
+            <a href id="forgot-password">Forgot Password?</a>
+            <button class="buttons" id="login">Login</button>
+        </div>
+
+        <div class="user-config" id="register-body">
+
+            <h3>Register</h3>
+
+            <label for="username">Username</label>
+            <p><i class="fa-solid fa-user"></i> <input type="text" name="username" id="register_un"></p>
+
+            <label for="email">E-mail</label>
+            <p><i class="fa-solid fa-at"></i></i> <input type="email" name="email" id="register_email"></p>  
+
+            <label for="password">Password</label>
+            <p><i class="fa-solid fa-key"></i> <input type="password" name="password" id="register_pw"></p>
+
+            <label for="secret-question">Secret Question</label>
+            <select name="secret-question" id="secret-question">
+                <option value="default">-----------------------------------</option>
+                <option value="mom">What's your mother's name?</option>
+                <option value="pet">What's your first pet's name?</option>
+                <option value="born">Where were you born?</option>
+            </select>
+            <input class="question" type="text" id="register_question">
+
+            <a href id="go-to-login"2>Login</a>
+            <button class="buttons" id="register">Register</button>
+        </div>
+
+        <div class="user-config" id="forgot-password-body" style="display: none">
+
+            <h3>Password Recovery</h3>
+
+            <label for="forgot">E-mail</label>
+            <p><i class="fa-solid fa-at"></i></i> <input type="email" name="forgot" id="forgot-email"></p>
+            <label for="question">Secret Question Answer</label>
+            <input type="password" name="question" id="forgot-question" class="question">
+
+            <button class="buttons" id="recover">Recover</button>
+
+        </div>
+
+    </div>
+    <!----------------------------------------------------------------->
+    
+    <!---------------------------UPLOAD------------------------------>
+    <input type="file" class="file" id="file" multiple>
+
+    <div id="drag" class="drag">
+        <p>Drag your files to here or click to select files</p>
+        <i class="fa-solid fa-arrow-up-from-bracket"></i>
+    </div>
+    
+    <div class="progress" id="progress">
+        <div class="bar-container">
+            <div id="progress-bar" class="bar"></div>
+        </div>
+        <p id="progress-text" class="progress-text">0%</p>
+    </div>
+    <!--------------------------------------------------------------->
+
+    <!---------------------------BODY------------------------------>
+    <div class="center">
+        <div class="create-folder">
+            <h3>Create New Folder</h3>
+        </div>
+        <div id="body" class="body">
+        </div>
+    </div>
+    <!------------------------------------------------------------->
+    <script type="module" src="script.js"></script>
+</body>
+
+</html>
