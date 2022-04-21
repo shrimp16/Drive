@@ -6,7 +6,8 @@
     align-items: center;
 
     .options {
-        display: none;
+        display: flex;
+        flex-direction: row;
         margin: 0.5rem;
     }
 

@@ -24,7 +24,8 @@ a {
   align-items: center;
 }
 .header .options {
-  display: none;
+  display: flex;
+  flex-direction: row;
   margin: 0.5rem;
 }
 .header .user-config {
