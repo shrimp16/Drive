@@ -184,7 +184,7 @@ a {
 }
 
 .bar-container {
-  width: 10rem;
+  width: 25%;
   height: 0.5rem;
   border: 2px black solid;
   border-radius: 10px;
@@ -200,7 +200,7 @@ a {
 }
 
 .storage-container {
-  width: 25rem;
+  width: 65%;
   height: 1.25rem;
   border: 2px black solid;
   border-radius: 25px;
