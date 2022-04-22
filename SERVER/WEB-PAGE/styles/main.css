@@ -24,7 +24,7 @@ a {
   align-items: center;
 }
 .header .options {
-  display: flex;
+  display: none;
   flex-direction: row;
   margin: 0.5rem;
 }

@@ -52,9 +52,7 @@ async function success(un, id) {
     card.show(`Welcome ${un}!`);
     document.querySelector('#login-body').style.display = 'none';
     document.querySelector('#register-body').style.display = 'none';
-    
-    const struct = await import('./structure/structure.js');
-    document.querySelector('#header').innerHTML += struct.getUserOptions();
+    document.querySelector('#options').style.display = 'block';
     config.setCurrentUser(id);
     storage.updateStorageInfo(id);
 }
