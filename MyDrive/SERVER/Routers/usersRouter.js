@@ -9,21 +9,44 @@ const Limit = require('../Persistance/Database/Tables/limits');
 
 router.post('/register', jsonParser, async (req, res) => {
 
-    const newUser = await User.create({
-        name: req.body.name,
-        email: req.body.email,
-        password: req.body.password
-    })
-
-    const newLimit = await Limit.create({
-        limit: 10,
-        usage: 0,
-        userID: newUser.id
-    })
-
     await database.sync();
 
-    res.send('User created with success!');
+    let user = await User.findOne(
+        { where: { name: req.body.name } }
+    )
+
+    let userByEmail = await User.findOne(
+        { where: {email: req.body.email }}
+    )
+
+    if (user !== null){
+        res.send('Username already in use!');
+        return;
+    }
+
+    if (userByEmail !== null) {
+        res.send("Email already in use!");
+        return;
+    }
+
+    if (user === null && userByEmail === null) {
+        const newUser = await User.create({
+            name: req.body.name,
+            email: req.body.email,
+            password: req.body.password
+        })
+
+        const newLimit = await Limit.create({
+            limit: 10,
+            usage: 0,
+            userID: newUser.id
+        })
+
+        res.send('User created with success');
+        return;
+    }
+
+    res.send('Something went wrong');
 
 })
 
