@@ -16,10 +16,10 @@ router.post('/register', jsonParser, async (req, res) => {
     )
 
     let userByEmail = await User.findOne(
-        { where: {email: req.body.email }}
+        { where: { email: req.body.email } }
     )
 
-    if (user !== null){
+    if (user !== null) {
         res.send('Username already in use!');
         return;
     }
@@ -48,6 +48,54 @@ router.post('/register', jsonParser, async (req, res) => {
 
     res.send('Something went wrong');
 
+})
+
+router.post('/login', jsonParser, async (req, res) => {
+
+    let user = await User.findOne(
+        { where: { name: req.body.name } }
+    )
+
+    let userByEmail = await User.findOne(
+        { where: { email: req.body.name } }
+    )
+
+    if (user === null && userByEmail === null) {
+        res.send({
+            message: 'Wrong credentials'
+        });
+        return;
+    }
+
+    if ((user === null) && (userByEmail.password === req.body.password)) {
+        res.send({
+            message: 'Success!',
+            id: userByEmail.id
+        });
+        return;
+    }else if((user === null) && (userByEmail.password !== req.body.password)) {
+        res.send({
+            message: 'Wrong password!'
+        })
+        return;
+    }
+
+    if ((user.password === req.body.password) && (userByEmail === null)) {
+        res.send({
+            message: 'Success!',
+            id: user.id
+        });
+        return;
+    }else if((user.password !== req.body.password) && (userByEmail === null)) {
+        res.send({
+            message: 'Wrong password!'
+        })
+        return;
+    }
+
+    res.send({
+        message: 'Something went wrong!'
+    });
 })
 
 module.exports = router;
