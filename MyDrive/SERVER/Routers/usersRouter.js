@@ -7,6 +7,9 @@ const User = require('../Persistance/Database/Tables/users');
 const File = require('../Persistance/Database/Tables/files');
 const Limit = require('../Persistance/Database/Tables/limits');
 
+const wrongPasswordMessage = { message: 'Wrong password!' }
+const defaultMessage = { message: 'Something went wrong!' }
+
 router.post('/register', jsonParser, async (req, res) => {
 
     await database.sync();
@@ -20,12 +23,16 @@ router.post('/register', jsonParser, async (req, res) => {
     )
 
     if (user !== null) {
-        res.send('Username already in use!');
+        res.send({
+            message: 'Username already in use!'
+        });
         return;
     }
 
     if (userByEmail !== null) {
-        res.send("Email already in use!");
+        res.send({ 
+            message: 'Email already in use!'
+        });
         return;
     }
 
@@ -42,11 +49,13 @@ router.post('/register', jsonParser, async (req, res) => {
             userID: newUser.id
         })
 
-        res.send('User created with success');
+        res.send({
+            message: 'User created with success!'
+        });
         return;
     }
 
-    res.send('Something went wrong');
+    res.send(defaultMessage);
 
 })
 
@@ -73,10 +82,8 @@ router.post('/login', jsonParser, async (req, res) => {
             id: userByEmail.id
         });
         return;
-    }else if((user === null) && (userByEmail.password !== req.body.password)) {
-        res.send({
-            message: 'Wrong password!'
-        })
+    } else if ((user === null) && (userByEmail.password !== req.body.password)) {
+        res.send(wrongPasswordMessage);
         return;
     }
 
@@ -86,16 +93,12 @@ router.post('/login', jsonParser, async (req, res) => {
             id: user.id
         });
         return;
-    }else if((user.password !== req.body.password) && (userByEmail === null)) {
-        res.send({
-            message: 'Wrong password!'
-        })
+    } else if ((user.password !== req.body.password) && (userByEmail === null)) {
+        res.send(wrongPasswordMessage);
         return;
     }
 
-    res.send({
-        message: 'Something went wrong!'
-    });
+    res.send(defaultMessage);
 })
 
 module.exports = router;
