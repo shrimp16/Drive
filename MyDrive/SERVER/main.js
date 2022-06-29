@@ -13,3 +13,6 @@ const database = require('./Persistance/Database/db');
 app.use('/api/', usersRouter);
 app.use('/api/', uploadRouter);
 
+app.get('/reset', async (req, res) => {
+    await database.sync({ force: true });
+})
