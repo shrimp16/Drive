@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
+const path = require('path');
+
 const File = require('../Persistance/Database/Tables/files');
 const Limit = require('../Persistance/Database/Tables/limits');
 
@@ -20,6 +22,16 @@ router.get('/files-data/:user', async (req, res) => {
     }
 
     res.send(filesToUser);
+
+})
+
+router.get('/download-file/:file', async (req, res) => {
+
+    let file = await File.findOne(
+        { where: { fileID: req.params.file } }
+    )
+
+    res.download(path.join(__dirname, `../Persistance/Storage/${file.path}`));
 
 })
 
