@@ -4,11 +4,11 @@ const User = require('./users');
 
 const Limit = database.define('limit', {
     limit: {
-        type: Sequelize.DECIMAL,
+        type: Sequelize.FLOAT,
         allowNull: false
     },
     usage: {
-        type: Sequelize.DECIMAL,
+        type: Sequelize.FLOAT,
         allowNull: false
     },
     userID: {

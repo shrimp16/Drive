@@ -12,8 +12,6 @@ const defaultMessage = { message: 'Something went wrong!' }
 
 router.post('/register', jsonParser, async (req, res) => {
 
-    await database.sync();
-
     let user = await User.findOne(
         { where: { name: req.body.name } }
     )

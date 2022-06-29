@@ -8,5 +8,8 @@ app.listen(40000, () => {
     console.log("Server running on port " + 40000);
 })
 
+const database = require('./Persistance/Database/db');
+
 app.use('/api/', usersRouter);
 app.use('/api/', uploadRouter);
+
