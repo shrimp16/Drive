@@ -34,8 +34,13 @@ router.get('/file/:file', async (req, res) => {
     console.log(file.fileType);
 
     if(file.fileType.includes('image')){
-        res.sendFile(path.join(__dirname, `../Persistance/Storage/${file.path}`))
+        res.sendFile(path.join(__dirname, `../Persistance/Storage/${file.path}`));
+        return;
     }
+
+    res.send({
+        message: 'Something went wrong!'
+    });
 
 })
 
