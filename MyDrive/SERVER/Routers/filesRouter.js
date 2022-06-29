@@ -25,6 +25,20 @@ router.get('/files-data/:user', async (req, res) => {
 
 })
 
+router.get('/file/:file', async (req, res) => {
+
+    let file = await File.findOne({
+        where: { fileID: req.params.file }
+    })
+
+    console.log(file.fileType);
+
+    if(file.fileType.includes('image')){
+        res.sendFile(path.join(__dirname, `../Persistance/Storage/${file.path}`))
+    }
+
+})
+
 router.get('/download-file/:file', async (req, res) => {
 
     let file = await File.findOne(
