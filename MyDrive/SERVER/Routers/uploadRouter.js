@@ -23,6 +23,7 @@ router.post('/upload', upload.array('files', 50), async (req, res) => {
         await File.create({
             path: req.files[i].filename,
             dir: req.body.dir,
+            fileType: req.files[i].mimetype,
             userID: req.body.userID
         })
     }

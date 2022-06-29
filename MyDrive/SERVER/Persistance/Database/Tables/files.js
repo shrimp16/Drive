@@ -16,6 +16,10 @@ const File = database.define('file', {
     dir: {
         type: Sequelize.STRING,
         allowNull: false
+    },
+    fileType: {
+        type: Sequelize.STRING,
+        allowNull: false
     }
 })
 
