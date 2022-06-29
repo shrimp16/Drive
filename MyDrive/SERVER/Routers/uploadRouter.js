@@ -15,8 +15,6 @@ router.post('/upload', upload.array('files', 50), async (req, res) => {
     })
 
     let usage = userLimit.usage;
-
-    console.log('b4 adding  ' + usage);
     
     for(let i = 0; i < req.files.length; i++){
 
@@ -33,8 +31,6 @@ router.post('/upload', upload.array('files', 50), async (req, res) => {
         { usage: usage },
         { where: { userID: req.body.userID}}
     )
-
-    console.log(usage);
 
     res.send({
         message: 'Files uploaded with success!'

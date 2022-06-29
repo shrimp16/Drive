@@ -15,4 +15,5 @@ app.use('/api/', uploadRouter);
 
 app.get('/reset', async (req, res) => {
     await database.sync({ force: true });
+    res.send({message: 'Reset'});
 })

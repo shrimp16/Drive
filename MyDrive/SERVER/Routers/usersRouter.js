@@ -4,7 +4,6 @@ const jsonParser = require('body-parser').json();
 const database = require('../Persistance/Database/db');
 
 const User = require('../Persistance/Database/Tables/users');
-const File = require('../Persistance/Database/Tables/files');
 const Limit = require('../Persistance/Database/Tables/limits');
 
 const wrongPasswordMessage = { message: 'Wrong password!' }
