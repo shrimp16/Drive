@@ -38,6 +38,16 @@ router.post('/upload', upload.array('files', 50), async (req, res) => {
 
 })
 
+router.get('/storage/:user', async (req, res) => {
+
+    let userLimits = await Limit.findOne({
+        where: { userID: req.params.user }
+    })
+
+    res.send(userLimits);
+
+})
+
 function bytesToGigabytes(bytes) {
     return (((bytes / 1024) / 1024) / 1024);
 }
