@@ -62,16 +62,23 @@ router.delete('/delete-file/:file', async (req, res) => {
         { where: { fileID: req.params.file } }
     )
 
-    fs.unlink(path.join(__dirname, `../Persistance/Storage/${file.path}`), (err) => {
-        if (err) throw err;
+    await File.destroy(
+        { where: { fileID: req.params.file } }
+    )
+
+    fs.unlink(path.join(__dirname, `../Persistance/Storage/${file.path}`), async (err) => {
+        
+        if (err) {
+            res.send({
+                message: 'Something went wrong!',
+                error: err.message
+            })
+        }
+
         res.send({
             message: 'File deleted!'
         })
-        return;
-    })
 
-    res.send({
-        message: 'Something went wrong!'
     })
 
 })
