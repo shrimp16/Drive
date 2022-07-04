@@ -67,6 +67,11 @@ router.delete('/delete-file/:file', async (req, res) => {
         res.send({
             message: 'File deleted!'
         })
+        return;
+    })
+
+    res.send({
+        message: 'Something went wrong!'
     })
 
 })
