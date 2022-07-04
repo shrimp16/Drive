@@ -3,6 +3,8 @@ const router = express.Router();
 
 const path = require('path');
 
+const fs = require('fs');
+
 const File = require('../Persistance/Database/Tables/files');
 const Limit = require('../Persistance/Database/Tables/limits');
 
@@ -51,6 +53,21 @@ router.get('/download-file/:file', async (req, res) => {
     )
 
     res.download(path.join(__dirname, `../Persistance/Storage/${file.path}`));
+
+})
+
+router.delete('/delete-file/:file', async (req, res) => {
+
+    let file = await File.findOne(
+        { where: { fileID: req.params.file } }
+    )
+
+    fs.unlink(path.join(__dirname, `../Persistance/Storage/${file.path}`), (err) => {
+        if (err) throw err;
+        res.send({
+            message: 'File deleted!'
+        })
+    })
 
 })
 
