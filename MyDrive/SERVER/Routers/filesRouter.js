@@ -76,4 +76,17 @@ router.delete('/delete-file/:file', async (req, res) => {
 
 })
 
+router.get('/limit/:user', async (req, res) => {
+
+    let limit = await Limit.findOne(
+        { where: { userID: req.params.user }}
+    )
+
+    res.send({
+        limit: limit.limit,
+        usage: limit.usage
+    });
+
+})
+
 module.exports = router;
