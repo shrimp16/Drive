@@ -39,6 +39,30 @@ router.post('/upload', upload.array('files', 50), async (req, res) => {
 
 })
 
+router.get('/user-dirs/:user', async (req, res) => {
+
+    let dirList = [];
+
+    let dirListDB = await File.findAll(
+        { where: { userID: req.params.user } }
+    )
+
+    for(let i = 0; i < dirListDB.length; i++){
+        dirList.push(dirListDB[i].dir);
+    }
+
+    let dirSet = new Set(dirList);
+    
+    dirList = [];
+
+    dirSet.forEach((i) => {
+        dirList.push(i)
+    })
+
+    res.send(dirList);
+
+})
+
 function bytesToGigabytes(bytes) {
     return (((bytes / 1024) / 1024) / 1024);
 }
