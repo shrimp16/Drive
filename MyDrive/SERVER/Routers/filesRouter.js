@@ -46,39 +46,35 @@ router.get('/file/:file', async (req, res) => {
         res.sendFile(path.join(__dirname, `../Persistance/Storage/${file.path}`));
         return;
     } else if (file.fileType.includes('audio')){
-        res.send('audio');
+        res.sendFile(path.join(__dirname, `../Persistance/Icons/audio.svg`));
         return;
     } else if (file.fileType.includes('video')){
-        res.send('video');
+        res.sendFile(path.join(__dirname, `../Persistance/Icons/video.svg`));
         return;
     } else if (file.fileType.includes('vnd.rar')){
-        res.send('rar');
+        res.sendFile(path.join(__dirname, `../Persistance/Icons/rar.svg`));
         return;
     } else if (file.fileType.includes('text')){
-        res.send('normal text');
+        res.sendFile(path.join(__dirname, `../Persistance/Icons/text.svg`));
         return;
     } else if (file.fileType.includes('wordprocessingml')){
-        res.send('word');
+        res.sendFile(path.join(__dirname, `../Persistance/Icons/word.svg`));
         return;
     } else if (file.fileType.includes('presentationml')){
-        res.send('power point');
+        res.sendFile(path.join(__dirname, `../Persistance/Icons/powerpoint.svg`));
         return;
     } else if (file.fileType.includes('x-mspublisher')){
-        res.send('publisher');
+        res.sendFile(path.join(__dirname, `../Persistance/Icons/publisher.svg`));
         return;
     } else if (file.fileType.includes('spreadsheetml')){
-        res.send('excel');
+        res.sendFile(path.join(__dirname, `../Persistance/Icons/excel.svg`));
         return;
     }
 
     res.send({
         message: 'Something went wrong!'
     });
-
-    //applicationvnd.openxmlformats-officedocument.wordprocessingml.document
-    //application/vnd.openxmlformats-officedocument.presentationml.presentation
-    //application/x-mspublisher
-    //application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+    
 })
 
 router.get('/download-file/:file', async (req, res) => {
