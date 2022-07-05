@@ -42,8 +42,29 @@ router.get('/file/:file', async (req, res) => {
 
     console.log(file.fileType);
 
-    if(file.fileType.includes('image')){
+    if (file.fileType.includes('image')){
         res.sendFile(path.join(__dirname, `../Persistance/Storage/${file.path}`));
+        return;
+    } else if (file.fileType.includes('audio')){
+        res.send('audio');
+        return;
+    } else if (file.fileType.includes('vnd.rar')){
+        res.send('rar');
+        return;
+    } else if (file.fileType.includes('text')){
+        res.send('normal text');
+        return;
+    } else if (file.fileType.includes('wordprocessingml')){
+        res.send('word');
+        return;
+    } else if (file.fileType.includes('presentationml')){
+        res.send('power point');
+        return;
+    } else if (file.fileType.includes('x-mspublisher')){
+        res.send('publisher');
+        return;
+    } else if (file.fileType.includes('spreadsheetml')){
+        res.send('excel');
         return;
     }
 
@@ -51,6 +72,10 @@ router.get('/file/:file', async (req, res) => {
         message: 'Something went wrong!'
     });
 
+    //applicationvnd.openxmlformats-officedocument.wordprocessingml.document
+    //application/vnd.openxmlformats-officedocument.presentationml.presentation
+    //application/x-mspublisher
+    //application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
 })
 
 router.get('/download-file/:file', async (req, res) => {
