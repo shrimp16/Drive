@@ -48,6 +48,9 @@ router.get('/file/:file', async (req, res) => {
     } else if (file.fileType.includes('audio')){
         res.send('audio');
         return;
+    } else if (file.fileType.includes('video')){
+        res.send('video');
+        return;
     } else if (file.fileType.includes('vnd.rar')){
         res.send('rar');
         return;
