@@ -33,6 +33,13 @@ router.get('/file/:file', async (req, res) => {
         where: { fileID: req.params.file }
     })
 
+    if(file === null) {
+        res.send({
+            message: `File doesn't exist!`
+        })
+        return;
+    }
+
     console.log(file.fileType);
 
     if(file.fileType.includes('image')){
