@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
 
+const path = require('path');
+
 const usersRouter = require('./Routers/usersRouter');
 const uploadRouter = require('./Routers/uploadRouter');
 const filesRouter = require('./Routers/filesRouter');

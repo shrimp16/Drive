@@ -24,6 +24,7 @@ router.post('/upload', upload.array('files', 50), async (req, res) => {
             path: req.files[i].filename,
             dir: req.body.dir,
             fileType: req.files[i].mimetype,
+            fileSize: bytesToGigabytes(req.files[i].size),
             userID: req.body.userID
         })
     }

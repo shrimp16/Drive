@@ -20,6 +20,10 @@ const File = database.define('file', {
     fileType: {
         type: Sequelize.STRING,
         allowNull: false
+    },
+    fileSize: {
+        type: Sequelize.FLOAT,
+        allowNull: false
     }
 })
 

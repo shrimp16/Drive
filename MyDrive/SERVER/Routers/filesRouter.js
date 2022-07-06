@@ -93,8 +93,21 @@ router.delete('/delete-file/:file', async (req, res) => {
         { where: { fileID: req.params.file } }
     )
 
+    let limit = await Limit.findOne(
+        { where: { userID: file.userID} }
+    )
+
     await File.destroy(
         { where: { fileID: req.params.file } }
+    )
+
+    let oldUsage = limit.usage;
+
+    let newUsage = oldUsage - file.fileSize;
+
+    await Limit.update(
+        { usage: newUsage },
+        { where: { userID: file.userID }}
     )
 
     fs.unlink(path.join(__dirname, `../Persistance/Storage/${file.path}`), async (err) => {
