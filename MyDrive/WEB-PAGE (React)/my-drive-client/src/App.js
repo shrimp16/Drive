@@ -1,6 +1,16 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 function App() {
   return (
-    <h1>W.I.P.</h1>
+    <>
+      <Router>
+        <Routes>
+          <Route path='/'></Route>
+          <Route path='/register'></Route>
+          <Route path='/login'></Route>
+        </Routes>
+      </Router>
+    </>
   );
 }
 
