@@ -1,12 +1,21 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import { MainTitle } from './Styles/Titles.styled';
+import { StyledMainHeader, StyledSecondaryHeader } from './Styles/Titles.styled';
+import { StyledAuthContainer } from './Styles/AuthContainer.styled';
+import { StyledAuthButton } from './Styles/Buttons.styled';
 
 function App() {
   return (
     <>
       <Router>
-        <MainTitle>My Drive</MainTitle>
+        <StyledMainHeader>My Drive</StyledMainHeader>
+        <StyledAuthContainer>
+          <StyledSecondaryHeader>Register</StyledSecondaryHeader>
+          <input></input>
+          <input></input>
+          <input></input>
+          <StyledAuthButton>Register</StyledAuthButton>
+        </StyledAuthContainer>
         <Routes>
           <Route path='/'></Route>
           <Route path='/register'></Route>
