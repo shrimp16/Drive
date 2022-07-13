@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { StyledMainHeader, StyledSecondaryHeader } from './Styles/Titles.styled';
 import { StyledAuthContainer } from './Styles/AuthContainer.styled';
 import { StyledAuthButton } from './Styles/Buttons.styled';
+import { StyledInput } from './Styles/Inputs.styled';
 
 function App() {
   return (
@@ -11,9 +12,9 @@ function App() {
         <StyledMainHeader>My Drive</StyledMainHeader>
         <StyledAuthContainer>
           <StyledSecondaryHeader>Register</StyledSecondaryHeader>
-          <input></input>
-          <input></input>
-          <input></input>
+          <StyledInput type="text"></StyledInput>
+          <StyledInput type="email"></StyledInput>
+          <StyledInput type="password"></StyledInput>
           <StyledAuthButton>Register</StyledAuthButton>
         </StyledAuthContainer>
         <Routes>
