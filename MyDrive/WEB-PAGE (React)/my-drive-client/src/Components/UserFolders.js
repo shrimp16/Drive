@@ -1,12 +1,15 @@
+import { StyledFolder } from '../Styles/NavBar.styled';
+
 function UserFolders(props) {
 
     if (props.viewFolders) {
         return (
             <>
-                <li>Root</li>
-                <li>Root</li>
-                <li>Root</li>
-                <li>Root</li>
+                <StyledFolder>Root</StyledFolder>
+                <StyledFolder>Root</StyledFolder>
+                <StyledFolder>Root</StyledFolder>
+                <StyledFolder>Root</StyledFolder>
+                <StyledFolder>Root</StyledFolder>
             </>
         )
     }

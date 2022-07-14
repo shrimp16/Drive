@@ -30,7 +30,12 @@ export const FoldersContainer = styled.div`
 export const StyledFolder = styled.li`
     padding: 1.35rem;
     text-align: center;
-    background-color: green;
+    transition: 0.5s;
+    cursor: pointer;
+    
+    &:hover {
+        background-color: rgba(111, 111, 111, 0.3);
+    }
 `
 
 export const LogOutButton = styled.li`

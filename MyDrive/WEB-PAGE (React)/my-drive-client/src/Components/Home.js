@@ -24,14 +24,14 @@ function Home() {
 
 
     const [width, heigth] = useWindowSize();
-    
+
     return (
         <>
-
             <StyledHomeContainer>
                 <StyledNavBar heigth={window.innerHeight}>
-                    <FoldersButton>Folders</FoldersButton>
+                    <FoldersButton onClick={() => setViewFolders(!viewFolders)}>Folders</FoldersButton>
                     <FoldersContainer>
+                        <UserFolders viewFolders={viewFolders}/>
                     </FoldersContainer>
                     <LogOutButton>Log Out</LogOutButton>
                 </StyledNavBar>
