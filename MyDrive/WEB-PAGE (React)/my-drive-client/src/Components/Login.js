@@ -3,7 +3,6 @@ import { StyledAuthContainer } from '../Styles/AuthContainer.styled';
 import { StyledAuthButton } from '../Styles/Buttons.styled';
 import { StyledInput } from '../Styles/Inputs.styled';
 
-
 function Login() {
 
     return (

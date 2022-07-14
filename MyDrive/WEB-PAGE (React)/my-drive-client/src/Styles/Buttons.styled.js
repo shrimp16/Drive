@@ -19,3 +19,8 @@ export const StyledAuthButton = styled.button`
         color: black;
     }
 `
+
+export const NavButtons = styled.button`
+    width: 7.5rem;
+    height: 3rem;
+`
