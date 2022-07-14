@@ -1,50 +1,43 @@
 import styled from 'styled-components';
 
 export const StyledNavBar = styled.ul`
-    list-style-type: none;
-    display: flex;
-    width: 10rem;
-    flex-direction: column;
-    justify-content: left;
-
-    li {
-        display: block;
-        text-align: center;
-        text-decoration: none;
-        font-size: 1.25rem;
-        padding: 6px 8px;
-        margin: 3px;
-        cursor: pointer;
-        transition: 0.4s;
-
-        &:hover {
-            background-color: rgba(111, 111, 111, 0.4);
-        }
-    }
+    width: 15%;
+    height: ${props => props.heigth - 110}px;
 `
 
-export const MainListItems = styled.a`
+
+export const FoldersButton = styled.li`
+    padding: 1.5rem;
     text-align: center;
-    text-decoration: none;
-    font-size: 1.5rem;
-    padding: 8px 10px;
-    margin: 3px;
+    transition: 0.5s;
     cursor: pointer;
-    transition: 0.4s;
 
     &:hover {
-        background-color: rgba(111, 111, 111, 0.4);
+        background-color: rgba(111, 111, 111, 0.5);
     }
 `
 
-export const LogOut = styled.a`
+export const FoldersContainer = styled.div`
+    height: 80%;
+    overflow: scroll;
+    scrollbar-width: none;
+    
+    &::-webkit-scrollbar{
+        display: none;
+    }
+`
+
+export const StyledFolder = styled.li`
+    padding: 1.35rem;
     text-align: center;
-    text-decoration: none;
-    font-size: 1.5rem;
-    padding: 8px 10px;
-    margin: 3px;
+    background-color: green;
+`
+
+export const LogOutButton = styled.li`
+    padding: 1.5rem;
+    text-align: center;
+    transition: 0.5s;
     cursor: pointer;
-    transition: 0.4s;
 
     &:hover {
         background-color: rgba(255, 0, 0, 0.4);

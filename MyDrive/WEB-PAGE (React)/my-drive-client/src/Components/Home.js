@@ -1,20 +1,41 @@
-import { StyledNavBar, MainListItems, LogOut } from '../Styles/NavBar.styled';
+import { StyledNavBar, FoldersButton, FoldersContainer, LogOutButton, StyledFolder } from '../Styles/NavBar.styled';
+import { StyledHomeContainer } from '../Styles/HomeContainer.styled';
 
-import { useState } from 'react';
+import { useState, useLayoutEffect } from 'react';
 
 import UserFolders from './UserFolders';
+
+function useWindowSize() {
+    const [size, setSize] = useState([0, 0]);
+    useLayoutEffect(() => {
+      function updateSize() {
+        setSize([window.innerWidth, window.innerHeight]);
+      }
+      window.addEventListener('resize', updateSize);
+      updateSize();
+      return () => window.removeEventListener('resize', updateSize);
+    }, []);
+    return size;
+  }
 
 function Home() {
 
     const [viewFolders, setViewFolders] = useState(false);
 
+
+    const [width, heigth] = useWindowSize();
+    
     return (
         <>
-            <StyledNavBar>
-                <MainListItems onClick={() => setViewFolders(!viewFolders)}>Folders</MainListItems>
-                <UserFolders viewFolders={viewFolders}></UserFolders>
-                <LogOut>Log Out</LogOut>
-            </StyledNavBar>
+
+            <StyledHomeContainer>
+                <StyledNavBar heigth={window.innerHeight}>
+                    <FoldersButton>Folders</FoldersButton>
+                    <FoldersContainer>
+                    </FoldersContainer>
+                    <LogOutButton>Log Out</LogOutButton>
+                </StyledNavBar>
+            </StyledHomeContainer>
         </>
     )
 }
