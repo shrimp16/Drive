@@ -1,5 +1,6 @@
 import { StyledNavBar, FoldersButton, FoldersContainer, LogOutButton } from '../Styles/NavBar.styled';
 import UserFolders from './UserFolders';
+
 import { useState, useLayoutEffect } from 'react';
 
 function NavBar() {
@@ -19,8 +20,7 @@ function NavBar() {
 
     const [viewFolders, setViewFolders] = useState(false);
 
-
-    const [width, heigth] = useWindowSize();
+    useWindowSize();
 
     return (
         <>
