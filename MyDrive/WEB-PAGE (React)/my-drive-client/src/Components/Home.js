@@ -1,6 +1,7 @@
 import { StyledHomeContainer } from '../Styles/HomeContainer.styled';
-import { StyledFilesContainer } from '../Styles/FilesContainer.styled';
 import NavBar from './NavBar';
+
+import FilesContainer from './FilesContainer';
 
 function Home() {
 
@@ -8,7 +9,7 @@ function Home() {
         <>
             <StyledHomeContainer>
                 <NavBar />
-                <StyledFilesContainer height={window.innerHeight}></StyledFilesContainer>
+                <FilesContainer />
             </StyledHomeContainer>
         </>
     )

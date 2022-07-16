@@ -1,8 +1,12 @@
+import { StyledFilesContainer } from '../Styles/FilesContainer.styled';
+
 function FilesContainer() {
 
     return (
         <>
-            <h1>W.I.P.</h1>
+            <StyledFilesContainer height={window.innerHeight}>
+                
+            </StyledFilesContainer>
         </>
     )
 }
